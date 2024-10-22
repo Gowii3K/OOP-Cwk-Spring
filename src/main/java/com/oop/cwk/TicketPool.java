@@ -1,5 +1,9 @@
 package com.oop.cwk;
 
+import org.springframework.beans.factory.config.ConfigurableBeanFactory;
+import org.springframework.context.annotation.Scope;
+import org.springframework.stereotype.Component;
+
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Collections;
@@ -8,6 +12,8 @@ import java.util.logging.Logger;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 
+@Component
+@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
 public class TicketPool {
 
     static Logger logger=Logger.getLogger(TicketPool.class.getName());
@@ -29,6 +35,11 @@ public class TicketPool {
             throw new RuntimeException("Failed to initialize logger", e);
         }
     }
+
+    public TicketPool() {
+        System.out.println("Initializing TicketPool");
+    }
+
     public  int getTotalTickets() {
         return totalTickets;
     }

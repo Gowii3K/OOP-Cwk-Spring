@@ -1918,3 +1918,741 @@ Oct 22, 2024 5:22:33 PM com.oop.cwk.TicketPool removeTicket
 INFO: Ticket No 50of event  3bought by 5
 Oct 22, 2024 5:22:33 PM com.oop.cwk.TicketPool removeTicket
 INFO: Ticket No 50of event  2bought by 5
+Oct 22, 2024 5:29:05 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 5:29:06 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  3bought by 5
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  3bought by 4
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  3bought by 4
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  3bought by 4
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  3bought by 4
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  3bought by 4
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  3bought by 3
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  3bought by 3
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  3bought by 3
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 3
+Oct 22, 2024 5:29:07 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  2bought by 5
+Oct 22, 2024 5:29:57 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 5:29:57 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 5:29:57 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 5:29:57 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 5:29:57 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 5:29:57 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 5:29:57 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 5:29:57 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  3bought by 5
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  3bought by 4
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  3bought by 3
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  3bought by 2
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  3bought by 1
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 3
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  2bought by 5
+Oct 22, 2024 5:29:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  2bought by 4
+Oct 22, 2024 5:29:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  2bought by 4
+Oct 22, 2024 5:29:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  2bought by 4
+Oct 22, 2024 5:29:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  2bought by 4
+Oct 22, 2024 5:32:38 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 5:32:38 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 5:32:38 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  3bought by 5
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  3bought by 5
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  3bought by 5
+Oct 22, 2024 5:32:39 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  3bought by 5
+Oct 22, 2024 5:32:40 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  3bought by 4
+Oct 22, 2024 5:32:40 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  3bought by 4
+Oct 22, 2024 5:32:40 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  3bought by 3
+Oct 22, 2024 5:32:40 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  3bought by 3
+Oct 22, 2024 5:32:40 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  3bought by 2
+Oct 22, 2024 5:32:40 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 3
+Oct 22, 2024 5:32:40 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  2bought by 5
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 2
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 3
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 3
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 2
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 3
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 2
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 3
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 2
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 3
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 2
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 3
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 5:33:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 2
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 3
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 2
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 2
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 3
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 3
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 2
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  1bought by 5
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  3bought by 5
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  2bought by 4
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  1bought by 4
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  3bought by 5
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  2bought by 4
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  1bought by 3
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  3bought by 4
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  2bought by 5
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  1bought by 2
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  2bought by 5
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  3bought by 4
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  1bought by 2
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  3bought by 4
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  2bought by 5
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  1bought by 2
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  2bought by 3
+Oct 22, 2024 5:33:43 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  3bought by 4
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  1bought by 2
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  2bought by 3
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  3bought by 3
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  1bought by 2
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  3bought by 3
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  2bought by 3
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  1bought by 2
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  3bought by 3
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  2bought by 2
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 1
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 2
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 3
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  1bought by 2
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  3bought by 3
+Oct 22, 2024 5:33:44 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  2bought by 1
+Oct 22, 2024 5:42:40 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 5:42:40 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 2
+Oct 22, 2024 5:42:40 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 2
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 2
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 2
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 2
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 2
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 2
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 2
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 3
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 2
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  3bought by 5
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  2bought by 5
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  1bought by 5
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  2bought by 4
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  3bought by 4
+Oct 22, 2024 5:42:41 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  1bought by 5
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  3bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  2bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  1bought by 5
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  2bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  3bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  1bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  2bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  3bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  1bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  3bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  2bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  1bought by 3
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  2bought by 3
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  3bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  1bought by 3
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  3bought by 4
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  2bought by 3
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  1bought by 2
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  2bought by 3
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  3bought by 3
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  1bought by 2
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 3
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 2
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 1
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  3bought by 3
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  2bought by 5
+Oct 22, 2024 5:42:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  1bought by 2
+Oct 22, 2024 5:46:26 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 5:46:26 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 5:46:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 5:46:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 5:46:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 5:46:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 5:46:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 5:46:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 5:46:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 2
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 3
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 2
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 3
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 2
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 3
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 3
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 5:50:33 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 2
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 3
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 2
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 2
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 3
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 2
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 3
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 2
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 3
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 3
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 2
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  1bought by 5
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  2bought by 5
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  3bought by 5
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  3bought by 4
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  1bought by 5
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  2bought by 4
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  3bought by 4
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  2bought by 4
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  1bought by 5
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  2bought by 4
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  1bought by 4
+Oct 22, 2024 5:50:34 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  3bought by 4
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  3bought by 4
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  2bought by 4
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  1bought by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  3bought by 4
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  2bought by 4
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  1bought by 2
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  1bought by 2
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  2bought by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  3bought by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  3bought by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  1bought by 2
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  2bought by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  2bought by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  3bought by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  1bought by 1
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 1
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 2
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  3bought by 3
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  1bought by 2
+Oct 22, 2024 5:50:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  2bought by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 2
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 2
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 2
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 2
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 2
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 2
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 2
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 2
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 3
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 5:51:56 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 2
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  1bought by 5
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  3bought by 5
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  2bought by 5
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  2bought by 4
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  3bought by 5
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  1bought by 5
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  2bought by 4
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  3bought by 4
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  1bought by 5
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  1bought by 5
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  3bought by 3
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  2bought by 4
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  2bought by 4
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  1bought by 5
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  3bought by 2
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  1bought by 4
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  3bought by 2
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  2bought by 3
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  1bought by 3
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  3bought by 2
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  2bought by 3
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  3bought by 2
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  2bought by 3
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  1bought by 2
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  2bought by 2
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  3bought by 2
+Oct 22, 2024 5:51:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  1bought by 2
+Oct 22, 2024 5:51:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 1
+Oct 22, 2024 5:51:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 3
+Oct 22, 2024 5:51:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 2
+Oct 22, 2024 5:51:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  2bought by 2
+Oct 22, 2024 5:51:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  1bought by 2
+Oct 22, 2024 5:51:58 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  3bought by 2
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 2
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 3
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 2
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 3
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 3
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 2
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 2
+Oct 22, 2024 6:02:58 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 3
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 3
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 2
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 3
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 2
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 3
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 1
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 2
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 3
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 1
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 2
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 3
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 1
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 2
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  3bought by 5
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  1bought by 5
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  2bought by 5
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  3bought by 4
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  1bought by 4
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  2bought by 4
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  3bought by 4
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  1bought by 3
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  2bought by 4
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  3bought by 4
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  1bought by 2
+Oct 22, 2024 6:02:59 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  2bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  3bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  1bought by 2
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  2bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  3bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  1bought by 2
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  2bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  3bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  1bought by 2
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  2bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  3bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  2bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  1bought by 2
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  3bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  2bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  1bought by 1
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 3
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 2
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 1
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  3bought by 4
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  1bought by 2
+Oct 22, 2024 6:03:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  2bought by 4
