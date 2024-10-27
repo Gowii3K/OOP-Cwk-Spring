@@ -12,8 +12,7 @@ import java.util.logging.Logger;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
 
-@Component
-@Scope(value = ConfigurableBeanFactory.SCOPE_PROTOTYPE)
+
 public class TicketPool {
 
     static Logger logger=Logger.getLogger(TicketPool.class.getName());

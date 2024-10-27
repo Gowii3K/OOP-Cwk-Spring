@@ -1,9 +1,9 @@
 package com.oop.cwk;
 
 import com.google.gson.Gson;
-import org.springframework.boot.SpringApplication;
+
 import org.springframework.boot.autoconfigure.SpringBootApplication;
-import org.springframework.context.ApplicationContext;
+
 
 import java.io.FileReader;
 import java.io.FileWriter;
@@ -14,13 +14,12 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
 
 
-        ApplicationContext context=SpringApplication.run(Main.class, args);
 
 
 
         // initialize TicketPool with values from config
         Gson gson = new Gson();
-        Config config = null;
+        Config config=new Config();
 
         System.out.println("Welcome to the program Please select an Option");
         System.out.println("1. Create New Config File");
@@ -92,7 +91,7 @@ public class Main {
 
 
         for (int i = 0; i < numVendors; i++) {
-            ticketPools[i]=context.getBean(TicketPool.class);
+            ticketPools[i]=new TicketPool();
             ticketPools[i].setTotalTickets(config.totalTickets);
             ticketPools[i].setMaximumTicketCapacity(config.maxTicketCapacity);
             int ticketReleaseRate=config.ticketReleaseRate;
@@ -126,6 +125,7 @@ public class Main {
             System.out.println(ticketPools[i].getTotalTickets());
             System.out.println(ticketPools[i].getMaximumTicketCapacity());
             System.out.println(ticketPools[i].currentTicket);
+            System.out.println(vendorObjects[i]);
             for(int j=0;j<numCustomers;j++){
                 System.out.println(customerObjects[i][j]);
                 System.out.println(customerObjects [i][j].customerId);

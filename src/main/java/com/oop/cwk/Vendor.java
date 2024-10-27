@@ -7,6 +7,7 @@ public  class Vendor implements Runnable{
     int releaseInterval;//get from config
 
     TicketPool ticketPool;
+    Config config;
 
 
     public Vendor(int TicketsPerRelease,int releaseInterval, TicketPool ticketPool,int vendorId){

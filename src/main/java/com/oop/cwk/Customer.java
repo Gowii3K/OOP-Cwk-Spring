@@ -16,6 +16,7 @@ public class Customer implements Runnable{
 
     String name;
 
+
     TicketPool ticketPool;
 
     public Customer(int retrievalInterval,TicketPool ticketPool,int customerId,int eventId){
