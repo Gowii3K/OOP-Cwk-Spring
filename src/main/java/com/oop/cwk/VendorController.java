@@ -10,13 +10,17 @@ import java.util.List;
 @CrossOrigin
 public class VendorController {
     @GetMapping("/vendors")
-    public List<Vendor> getVendors() {
-        return Main.getVendors();
+    public TicketPool getVendors() {
+        return Main.getTicketPool();
 
     }
 
     @GetMapping("/customers")
-    public List<Customer> getCustomers() {
-        return Main.getCustomers();
+    public TicketDTO getCustomers() {
+        TicketPool ticketPool = Main.getTicketPool();
+        List<Customer> customers=Main.getCustomers();
+        List<Vendor> vendors=Main.getVendors();
+        return new TicketDTO(ticketPool,customers,vendors);
     }
+
 }

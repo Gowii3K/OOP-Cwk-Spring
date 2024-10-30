@@ -1,13 +1,9 @@
 package com.oop.cwk;
-
-import org.springframework.beans.factory.config.ConfigurableBeanFactory;
-import org.springframework.context.annotation.Scope;
-import org.springframework.stereotype.Component;
-
 import java.io.IOException;
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
+import java.util.concurrent.ConcurrentLinkedQueue;
+import java.util.concurrent.locks.Condition;
+import java.util.concurrent.locks.Lock;
+import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
@@ -16,12 +12,12 @@ import java.util.logging.SimpleFormatter;
 public class TicketPool {
 
     static Logger logger=Logger.getLogger(TicketPool.class.getName());
-
-    int test;
-     int ticketsOnSale;// make this thread safe
+    private final Lock lock = new ReentrantLock();
+    private final Condition notFull = lock.newCondition();
+    private final Condition notEmpty = lock.newCondition();
      int totalTickets;
      int maximumTicketCapacity;
-     List<Integer> availableTickets = Collections.synchronizedList(new ArrayList<>());
+     ConcurrentLinkedQueue<Integer> availableTickets = new ConcurrentLinkedQueue<>();
      int currentTicket = 1;
 
     static {
@@ -44,134 +40,88 @@ public class TicketPool {
         return totalTickets;
     }
 
-    public int getCurrentTicket() {
-        return currentTicket;
-    }
 
-    public void setCurrentTicket(int currentTicket) {
-        this.currentTicket = currentTicket;
-    }
 
-    public int getTicketsOnSale() {
-        return ticketsOnSale;
-    }
 
-    public void setTicketsOnSale(int ticketsOnSale) {
-        this.ticketsOnSale = ticketsOnSale;
-    }
 
-    public int getTest() {
-        return test;
-    }
 
-    public void setTest(int test) {
-        this.test = test;
-    }
-
-    public List<Integer> getAvailableTickets() {
-        return availableTickets;
-    }
-
-    public void setAvailableTickets(List<Integer> availableTickets) {
-        this.availableTickets = availableTickets;
-    }
 
     public  void setTotalTickets(int totalTickets) {
         this.totalTickets = totalTickets;
     }
 
-    public int getMaximumTicketCapacity() {
-        return this.maximumTicketCapacity;
-    }
 
-    public  void setMaximumTicketCapacity(int maximumTicketCapacity) {
-        this.maximumTicketCapacity = maximumTicketCapacity;
-    }
 
-    public synchronized void addTickets(int TicketsPerRelease, int releaseInterval,int vendorId) throws InterruptedException {
-        ticketsOnSale = availableTickets.size();
+    public  void addTickets(int TicketsPerRelease, int releaseInterval,int vendorId) throws InterruptedException {
+        lock.lock();
+        try {
+            //checks max capacity and notifies waiting threads,so they can terminate
+            if (totalTickets == 0) {
+                System.out.println("All tickets added");
+                return;
+            }
+            //checks if it should wait for customers to buy
+            else if (availableTickets.size() == maximumTicketCapacity) {
+                System.out.println("wait for customers to buy");
+                notFull.await();
+            }
+            // if neither of the above condition is satisfied proceed with adding tickets
+            int remainingCapacity = maximumTicketCapacity - availableTickets.size();
+            int ticketBatch;
+            // find the least amount between tickets per release, remaining ticket slots, and total tickets
+            if (TicketsPerRelease <= remainingCapacity && TicketsPerRelease <= totalTickets) {
+                ticketBatch = TicketsPerRelease;
 
-        //checks max capacity and notifies waiting threads,so they can terminate
-        if(totalTickets==0){
+            } else ticketBatch = Math.min(totalTickets, remainingCapacity);
+            System.out.println("ticket batch is" + ticketBatch);
 
-            System.out.println("All tickets added");
-            notifyAll();
-            return;
-
+            for (int i = 0; i < ticketBatch; i++) {
+                System.out.println(("Ticket No " + currentTicket + "Added by " + vendorId));
+                logger.info("Ticket No " + currentTicket + "Added by " + vendorId);
+                availableTickets.offer(currentTicket);
+                currentTicket++;
+                totalTickets--;
+                System.out.println("tickets are for event "+ availableTickets);
+            }
+            //notify waiting threads
+            notEmpty.signalAll();
         }
-
-        //checks if it should wait for customers to buy
-        else if (ticketsOnSale==maximumTicketCapacity) {
-            System.out.println("wait for cust to add");
-            wait();
-
-        }
-        System.out.println("check");
-        // if neither of the above condition is satisfied proceed with adding tickets
-
-        int remainingCapacity=maximumTicketCapacity-ticketsOnSale;
-        int ticketBatch = 0;
-        // find the least amount between tickets per release, remaining ticket slots, and total tickets
-        if(TicketsPerRelease<=remainingCapacity && TicketsPerRelease<=totalTickets){
-            ticketBatch=TicketsPerRelease;
-            System.out.println("tpr");
-        } else if (totalTickets>remainingCapacity) {
-            ticketBatch=remainingCapacity;
-            System.out.println("rem cap");
-        }
-        else{
-            ticketBatch=totalTickets;
-            System.out.println("tt");
-        }
-
-        System.out.println("ticket batch is" + ticketBatch);
-        for(int i=0;i<ticketBatch;i++){
-
-            System.out.println(("Ticket No "+currentTicket+"Added by "+vendorId));
-            logger.info("Ticket No "+currentTicket+"Added by "+vendorId);
-            availableTickets.add(currentTicket);
-            currentTicket++;
-            totalTickets--;
-            ticketsOnSale++;
-            System.out.println("tickets are for event "+vendorId+availableTickets);
-
-
+        finally {
+            lock.unlock();
         }
         Thread.sleep(releaseInterval);
-        //notify waiting threads
-        notifyAll();
-
-
-
-
     }
 
 
-    public synchronized Integer removeTicket(int retrievalInterval,int customerId,int eventId) throws InterruptedException {
+    public  Integer removeTicket(int retrievalInterval,int customerId) throws InterruptedException {
         //total tickets out and no more on sale
-        if (ticketsOnSale == 0 && totalTickets == 0) {
-            System.out.println("All tickets sold out ");
-            notifyAll();
-            return null;
+        Integer purchasedTicket;
+        lock.lock();
+        try {
+            if (availableTickets.isEmpty() && totalTickets == 0) {
+                System.out.println("All tickets sold out ");
+                return null;
+            }
+
+            //nothing on sale but it will be put up eventually
+            else if (totalTickets > 0 && availableTickets.isEmpty()) {
+                System.out.println("wait for vendors to add pls");
+                notEmpty.await();
+                return null;
+
+            } else {
+                purchasedTicket = availableTickets.poll();
+                System.out.println("Ticket No " + purchasedTicket + "of event  "  + "bought by " + customerId);
+                logger.info("Ticket No " + purchasedTicket + "of event  "  + "bought by " + customerId);
+                notFull.signalAll();
+            }
         }
-        //nothing on sale but it will be put up eventually
-        else if (totalTickets > 0 && ticketsOnSale == 0) {
-            System.out.println("wait for vendors to add pls");
-            wait();
-            return null;
-
-        } else {
-            int purchasedTicket = availableTickets.removeFirst();
-
-            System.out.println("Purchase ticket is " + purchasedTicket);
-            System.out.println("Ticket No "+purchasedTicket+"of event  "+eventId+"bought by "+customerId);
-            logger.info("Ticket No "+purchasedTicket+"of event  "+eventId+"bought by "+customerId);
-            ticketsOnSale--;
-            Thread.sleep(retrievalInterval);
-            notifyAll();
-            return purchasedTicket;
-
+        finally {
+            lock.unlock();
         }
+        Thread.sleep(retrievalInterval);
+        return purchasedTicket;
+
 
 
 

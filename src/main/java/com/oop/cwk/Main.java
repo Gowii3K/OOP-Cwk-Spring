@@ -15,18 +15,20 @@ import java.util.Scanner;
 @SpringBootApplication
 public class Main {
 
-    private static List<TicketPool> ticketPools = new ArrayList<>();
 
-    public static List<TicketPool> getTicketPools() {
-        return ticketPools;
-    }
 
-    public static void setTicketPools(List<TicketPool> ticketPools) {
-        Main.ticketPools = ticketPools;
-    }
+    static TicketPool ticketPool = new TicketPool();
+
 
     private static List<Vendor> vendors = new ArrayList<>();
 
+    public static TicketPool getTicketPool() {
+        return ticketPool;
+    }
+
+    public static void setTicketPool(TicketPool ticketPool) {
+        Main.ticketPool = ticketPool;
+    }
 
     public static List<Vendor> getVendors() {
         return vendors;
@@ -105,7 +107,7 @@ public class Main {
 
 
         int numVendors=3;
-        int numCustomers=5;
+        int numCustomers=7;
 
 
 
@@ -115,54 +117,60 @@ public class Main {
 
         Vendor[] vendorObjects = new Vendor[numVendors];
 
-        Customer[][]customerObjects = new Customer[numVendors][numCustomers];
+        Customer[]customerObjects = new Customer[numCustomers];
         Thread [] vendorThreads=new Thread[numVendors];
-        Thread [][] customerThreads=new Thread[numVendors][numCustomers];
+        Thread [] customerThreads=new Thread[numCustomers];
+
+
+        ticketPool.totalTickets=config.totalTickets;
+        ticketPool.maximumTicketCapacity=config.maxTicketCapacity;
+
 
 
         for (int i = 0; i < numVendors; i++) {
-            ticketPools.add( new TicketPool());
-            ticketPools.get(i).setTotalTickets(config.totalTickets);
-            ticketPools.get(i).setMaximumTicketCapacity(config.maxTicketCapacity);
-            int ticketReleaseRate=config.ticketReleaseRate;
-            int customerRetrievalRate=config.customerRetrievalRate;
-            vendorObjects[i] = new Vendor(12, ticketReleaseRate, ticketPools.get(i),i+1); // Example: different TicketsPerRelease
+
+            int ticketReleaseRate = config.ticketReleaseRate;
+
+            vendorObjects[i] = new Vendor(6, ticketReleaseRate, ticketPool, i + 1); // Example: different TicketsPerRelease
             vendors.add(vendorObjects[i]);
-            vendorThreads[i]= new Thread(vendorObjects[i]);
+            vendorThreads[i] = new Thread(vendorObjects[i]);
             vendorThreads[i].start();
-
-
-
-            for (int j = 0; j < numCustomers; j++) {
-                customerObjects[i][j] = new Customer(customerRetrievalRate, ticketPools.get(i),j+1,i+1);
-                customers.add(customerObjects[i][j]);
-                customerThreads[i][j] =new Thread(customerObjects[i][j]);
-                customerThreads[i][j].start();
-
-            }
         }
+
+        for (int i = 0; i < numCustomers; i++) {
+
+            int customerRetrievalRate = config.customerRetrievalRate;
+
+            customerObjects[i] = new Customer(customerRetrievalRate, ticketPool, i + 1); // Example: different TicketsPerRelease
+            customers.add(customerObjects[i]);
+            customerThreads[i]=new Thread(customerObjects[i]);
+            customerThreads[i].start();
+        }
+
+
+
+
+
 
         for (int i = 0; i < numVendors; i++) {
             vendorThreads[i].join();
+        }
 
-            for (int j = 0; j < numCustomers; j++) {
-                customerThreads[i][j].join();
+        for (int j = 0; j < numCustomers; j++) {
+                customerThreads[j].join();
 
-            }
         }
 
 
-        for(int i=0;i<numVendors;i++){
-            System.out.println(ticketPools.get(i));
-            System.out.println(ticketPools.get(i).getTotalTickets());
-            System.out.println(ticketPools.get(i).getMaximumTicketCapacity());
-            System.out.println(ticketPools.get(i).currentTicket);
+
+        for(int i=0;i<numVendors;i++) {
             System.out.println(vendorObjects[i]);
-            for(int j=0;j<numCustomers;j++){
-                System.out.println(customerObjects[i][j]);
-                System.out.println(customerObjects [i][j].customerId);
-            }
         }
+        for(int j=0;j<numCustomers;j++){
+            System.out.println(customerObjects[j]);
+            System.out.println(customerObjects[j].customerId);
+        }
+
 
         // Create and start customer threads
 
