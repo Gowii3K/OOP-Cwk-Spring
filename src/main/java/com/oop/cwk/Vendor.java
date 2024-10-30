@@ -6,8 +6,10 @@ public  class Vendor implements Runnable{
     int TicketsPerRelease;// varies from vendor import random
     int releaseInterval;//get from config
 
+
+
     TicketPool ticketPool;
-    Config config;
+
 
 
     public Vendor(int TicketsPerRelease,int releaseInterval, TicketPool ticketPool,int vendorId){
@@ -17,6 +19,38 @@ public  class Vendor implements Runnable{
         this.vendorId=vendorId;
 
     }
+
+    public int getVendorId() {
+        return vendorId;
+    }
+
+    public void setVendorId(int vendorId) {
+        this.vendorId = vendorId;
+    }
+
+    public int getTicketsPerRelease() {
+        return TicketsPerRelease;
+    }
+
+    public void setTicketsPerRelease(int ticketsPerRelease) {
+        TicketsPerRelease = ticketsPerRelease;
+    }
+
+
+
+    public void setReleaseInterval(int releaseInterval) {
+        this.releaseInterval = releaseInterval;
+    }
+
+    public TicketPool getTicketPool() {
+        return ticketPool;
+    }
+
+    public void setTicketPool(TicketPool ticketPool) {
+        this.ticketPool = ticketPool;
+    }
+
+
 
     @Override
     public void run() {

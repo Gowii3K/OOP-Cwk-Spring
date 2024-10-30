@@ -1,6 +1,8 @@
 package com.oop.cwk;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Logger;
 import java.util.logging.FileHandler;
 import java.util.logging.SimpleFormatter;
@@ -10,6 +12,32 @@ public class Customer implements Runnable{
     Logger logger=Logger.getLogger(Customer.class.getName());
 
     int customerId;
+
+    public int getCustomerId() {
+        return customerId;
+    }
+
+    public void setCustomerId(int customerId) {
+        this.customerId = customerId;
+    }
+
+    public List<Integer> getBoughtTickets() {
+        return boughtTickets;
+    }
+
+    public void setBoughtTickets(List<Integer> boughtTickets) {
+        this.boughtTickets = boughtTickets;
+    }
+
+    public int getEventId() {
+        return eventId;
+    }
+
+    public void setEventId(int eventId) {
+        this.eventId = eventId;
+    }
+
+    List<Integer> boughtTickets= new ArrayList<>();
     int retrievalInterval;//get from config
 
     int eventId;
@@ -34,7 +62,11 @@ public class Customer implements Runnable{
         while (true) {
 
                 try {
-                    ticketPool.removeTicket(retrievalInterval,customerId,eventId);
+
+                    Integer ticket=ticketPool.removeTicket(retrievalInterval,customerId,eventId);
+                    if (ticket!=null){
+                        boughtTickets.add(ticket);
+                    }
                     //logger.info("Customer " + customerId + " purchased a ticket.");
                     if (ticketPool.getTotalTickets() == 0 && ticketPool.ticketsOnSale==0) {
                         System.out.println("All tickets added, customer " + customerId + " is done.");

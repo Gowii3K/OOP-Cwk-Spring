@@ -17,6 +17,7 @@ public class TicketPool {
 
     static Logger logger=Logger.getLogger(TicketPool.class.getName());
 
+    int test;
      int ticketsOnSale;// make this thread safe
      int totalTickets;
      int maximumTicketCapacity;
@@ -41,6 +42,38 @@ public class TicketPool {
 
     public  int getTotalTickets() {
         return totalTickets;
+    }
+
+    public int getCurrentTicket() {
+        return currentTicket;
+    }
+
+    public void setCurrentTicket(int currentTicket) {
+        this.currentTicket = currentTicket;
+    }
+
+    public int getTicketsOnSale() {
+        return ticketsOnSale;
+    }
+
+    public void setTicketsOnSale(int ticketsOnSale) {
+        this.ticketsOnSale = ticketsOnSale;
+    }
+
+    public int getTest() {
+        return test;
+    }
+
+    public void setTest(int test) {
+        this.test = test;
+    }
+
+    public List<Integer> getAvailableTickets() {
+        return availableTickets;
+    }
+
+    public void setAvailableTickets(List<Integer> availableTickets) {
+        this.availableTickets = availableTickets;
     }
 
     public  void setTotalTickets(int totalTickets) {
@@ -101,9 +134,10 @@ public class TicketPool {
             totalTickets--;
             ticketsOnSale++;
             System.out.println("tickets are for event "+vendorId+availableTickets);
-            Thread.sleep(releaseInterval);
+
 
         }
+        Thread.sleep(releaseInterval);
         //notify waiting threads
         notifyAll();
 
@@ -113,20 +147,18 @@ public class TicketPool {
     }
 
 
-    public synchronized void removeTicket(int retrievalInterval,int customerId,int eventId) throws InterruptedException {
+    public synchronized Integer removeTicket(int retrievalInterval,int customerId,int eventId) throws InterruptedException {
         //total tickets out and no more on sale
         if (ticketsOnSale == 0 && totalTickets == 0) {
             System.out.println("All tickets sold out ");
             notifyAll();
-
-
+            return null;
         }
-
         //nothing on sale but it will be put up eventually
         else if (totalTickets > 0 && ticketsOnSale == 0) {
             System.out.println("wait for vendors to add pls");
             wait();
-
+            return null;
 
         } else {
             int purchasedTicket = availableTickets.removeFirst();
@@ -137,8 +169,10 @@ public class TicketPool {
             ticketsOnSale--;
             Thread.sleep(retrievalInterval);
             notifyAll();
+            return purchasedTicket;
 
         }
+
 
 
     }

@@ -2,16 +2,46 @@ package com.oop.cwk;
 
 import com.google.gson.Gson;
 
+import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 
 
 import java.io.FileReader;
 import java.io.FileWriter;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Scanner;
 
 @SpringBootApplication
 public class Main {
+
+    private static List<TicketPool> ticketPools = new ArrayList<>();
+
+    public static List<TicketPool> getTicketPools() {
+        return ticketPools;
+    }
+
+    public static void setTicketPools(List<TicketPool> ticketPools) {
+        Main.ticketPools = ticketPools;
+    }
+
+    private static List<Vendor> vendors = new ArrayList<>();
+
+
+    public static List<Vendor> getVendors() {
+        return vendors;
+    }
+    private static List<Customer> customers= new ArrayList<>();
+    public static List<Customer> getCustomers() {
+        return customers;
+    }
+
+    public static void setVendors(List<Vendor> vendors) {
+        Main.vendors = vendors;
+    }
+
     public static void main(String[] args) throws InterruptedException {
+        SpringApplication.run(Main.class, args);
 
 
 
@@ -84,26 +114,28 @@ public class Main {
         //vendor threads cant release more at a time than maximum ticket capacity
 
         Vendor[] vendorObjects = new Vendor[numVendors];
-        TicketPool[] ticketPools = new TicketPool[numVendors];
+
         Customer[][]customerObjects = new Customer[numVendors][numCustomers];
         Thread [] vendorThreads=new Thread[numVendors];
         Thread [][] customerThreads=new Thread[numVendors][numCustomers];
 
 
         for (int i = 0; i < numVendors; i++) {
-            ticketPools[i]=new TicketPool();
-            ticketPools[i].setTotalTickets(config.totalTickets);
-            ticketPools[i].setMaximumTicketCapacity(config.maxTicketCapacity);
+            ticketPools.add( new TicketPool());
+            ticketPools.get(i).setTotalTickets(config.totalTickets);
+            ticketPools.get(i).setMaximumTicketCapacity(config.maxTicketCapacity);
             int ticketReleaseRate=config.ticketReleaseRate;
             int customerRetrievalRate=config.customerRetrievalRate;
-            vendorObjects[i] = new Vendor(12, ticketReleaseRate, ticketPools[i],i+1); // Example: different TicketsPerRelease
+            vendorObjects[i] = new Vendor(12, ticketReleaseRate, ticketPools.get(i),i+1); // Example: different TicketsPerRelease
+            vendors.add(vendorObjects[i]);
             vendorThreads[i]= new Thread(vendorObjects[i]);
             vendorThreads[i].start();
 
 
 
             for (int j = 0; j < numCustomers; j++) {
-                customerObjects[i][j] = new Customer(customerRetrievalRate, ticketPools[i],j+1,i+1);
+                customerObjects[i][j] = new Customer(customerRetrievalRate, ticketPools.get(i),j+1,i+1);
+                customers.add(customerObjects[i][j]);
                 customerThreads[i][j] =new Thread(customerObjects[i][j]);
                 customerThreads[i][j].start();
 
@@ -121,10 +153,10 @@ public class Main {
 
 
         for(int i=0;i<numVendors;i++){
-            System.out.println(ticketPools[i]);
-            System.out.println(ticketPools[i].getTotalTickets());
-            System.out.println(ticketPools[i].getMaximumTicketCapacity());
-            System.out.println(ticketPools[i].currentTicket);
+            System.out.println(ticketPools.get(i));
+            System.out.println(ticketPools.get(i).getTotalTickets());
+            System.out.println(ticketPools.get(i).getMaximumTicketCapacity());
+            System.out.println(ticketPools.get(i).currentTicket);
             System.out.println(vendorObjects[i]);
             for(int j=0;j<numCustomers;j++){
                 System.out.println(customerObjects[i][j]);
