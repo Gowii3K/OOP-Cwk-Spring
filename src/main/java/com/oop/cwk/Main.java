@@ -107,7 +107,7 @@ public class Main {
 
 
         int numVendors=3;
-        int numCustomers=7;
+        int numCustomers=100;
 
 
 
@@ -170,6 +170,7 @@ public class Main {
             System.out.println(customerObjects[j]);
             System.out.println(customerObjects[j].customerId);
         }
+
 
 
         // Create and start customer threads

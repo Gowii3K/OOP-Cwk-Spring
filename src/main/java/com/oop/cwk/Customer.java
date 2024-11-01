@@ -6,7 +6,7 @@ import java.util.logging.Logger;
 
 public class Customer implements Runnable{
 
-    Logger logger=Logger.getLogger(Customer.class.getName());
+
 
     int customerId;
 

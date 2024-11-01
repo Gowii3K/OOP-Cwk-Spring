@@ -15,10 +15,10 @@ public class TicketPool {
     private final Lock lock = new ReentrantLock();
     private final Condition notFull = lock.newCondition();
     private final Condition notEmpty = lock.newCondition();
-     int totalTickets;
-     int maximumTicketCapacity;
-     ConcurrentLinkedQueue<Integer> availableTickets = new ConcurrentLinkedQueue<>();
-     int currentTicket = 1;
+    int totalTickets;
+    int maximumTicketCapacity;
+    ConcurrentLinkedQueue<Integer> availableTickets = new ConcurrentLinkedQueue<>();
+    int currentTicket = 1;
 
     static {
         try {
@@ -35,17 +35,9 @@ public class TicketPool {
     public TicketPool() {
         System.out.println("Initializing TicketPool");
     }
-
     public  int getTotalTickets() {
         return totalTickets;
     }
-
-
-
-
-
-
-
     public  void setTotalTickets(int totalTickets) {
         this.totalTickets = totalTickets;
     }
@@ -121,9 +113,5 @@ public class TicketPool {
         }
         Thread.sleep(retrievalInterval);
         return purchasedTicket;
-
-
-
-
     }
 }

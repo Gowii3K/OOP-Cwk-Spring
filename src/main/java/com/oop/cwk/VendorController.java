@@ -23,4 +23,9 @@ public class VendorController {
         return new TicketDTO(ticketPool,customers,vendors);
     }
 
+    @GetMapping("/test")
+    public List<Vendor> getTestVendors() {
+        return Main.getVendors();
+    }
+
 }

@@ -8,7 +8,39 @@ public  class Vendor implements Runnable{
 
     TicketPool ticketPool;
 
-    public Vendor(int TicketsPerRelease,int releaseInterval, TicketPool ticketPool,int vendorId){
+    public int getVendorId() {
+        return vendorId;
+    }
+
+    public void setVendorId(int vendorId) {
+        this.vendorId = vendorId;
+    }
+
+    public int getTicketsPerRelease() {
+        return TicketsPerRelease;
+    }
+
+    public void setTicketsPerRelease(int ticketsPerRelease) {
+        TicketsPerRelease = ticketsPerRelease;
+    }
+
+    public int getReleaseInterval() {
+        return releaseInterval;
+    }
+
+    public void setReleaseInterval(int releaseInterval) {
+        this.releaseInterval = releaseInterval;
+    }
+
+    public TicketPool getTicketPool() {
+        return ticketPool;
+    }
+
+    public void setTicketPool(TicketPool ticketPool) {
+        this.ticketPool = ticketPool;
+    }
+
+    public Vendor(int TicketsPerRelease, int releaseInterval, TicketPool ticketPool, int vendorId){
         this.TicketsPerRelease=TicketsPerRelease;
         this.releaseInterval=releaseInterval;
         this.ticketPool=ticketPool;
