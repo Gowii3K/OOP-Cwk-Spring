@@ -20,6 +20,21 @@ public class TicketPool {
     ConcurrentLinkedQueue<Integer> availableTickets = new ConcurrentLinkedQueue<>();
     int currentTicket = 1;
 
+    public ConcurrentLinkedQueue<Integer> getAvailableTickets() {
+        return availableTickets;
+    }
+
+    public int getMaximumTicketCapacity() {
+        return maximumTicketCapacity;
+    }
+
+    public  int getTotalTickets() {
+        return totalTickets;
+    }
+    public  void setTotalTickets(int totalTickets) {
+        this.totalTickets = totalTickets;
+    }
+
     static {
         try {
             // Set up the logger to log to a file
@@ -35,83 +50,93 @@ public class TicketPool {
     public TicketPool() {
         System.out.println("Initializing TicketPool");
     }
-    public  int getTotalTickets() {
-        return totalTickets;
-    }
-    public  void setTotalTickets(int totalTickets) {
-        this.totalTickets = totalTickets;
-    }
 
 
-
-    public  void addTickets(int TicketsPerRelease, int releaseInterval,int vendorId) throws InterruptedException {
+    public  void addTickets(int TicketsPerRelease, int releaseInterval,int vendorId ,Vendor vendor) throws InterruptedException {
         lock.lock();
         try {
-            //checks max capacity and notifies waiting threads,so they can terminate
-            if (totalTickets == 0) {
-                System.out.println("All tickets added");
-                return;
-            }
-            //checks if it should wait for customers to buy
-            else if (availableTickets.size() == maximumTicketCapacity) {
-                System.out.println("wait for customers to buy");
-                notFull.await();
-            }
-            // if neither of the above condition is satisfied proceed with adding tickets
-            int remainingCapacity = maximumTicketCapacity - availableTickets.size();
-            int ticketBatch;
-            // find the least amount between tickets per release, remaining ticket slots, and total tickets
-            if (TicketsPerRelease <= remainingCapacity && TicketsPerRelease <= totalTickets) {
-                ticketBatch = TicketsPerRelease;
+            while (true) {
+                //checks max capacity and notifies waiting threads,so they can terminate
+                if (totalTickets == 0) {
+                    System.out.println("All tickets added");
+                    return;
+                }
+                //checks if it should wait for customers to buy
+                else if (availableTickets.size() == maximumTicketCapacity) {
+                    System.out.println("wait for customers to buy");
+                    notFull.await();
+                }
+                // if neither of the above condition is satisfied proceed with adding tickets
+                else {
+                    int remainingCapacity = maximumTicketCapacity - availableTickets.size();
+                    int ticketBatch;
 
-            } else ticketBatch = Math.min(totalTickets, remainingCapacity);
-            System.out.println("ticket batch is" + ticketBatch);
+                    // find the least amount between tickets per release, remaining ticket slots, and total tickets
+                    if (TicketsPerRelease <= remainingCapacity && TicketsPerRelease <= totalTickets) {
+                        ticketBatch = TicketsPerRelease;
 
-            for (int i = 0; i < ticketBatch; i++) {
-                System.out.println(("Ticket No " + currentTicket + "Added by " + vendorId));
-                logger.info("Ticket No " + currentTicket + "Added by " + vendorId);
-                availableTickets.offer(currentTicket);
-                currentTicket++;
-                totalTickets--;
-                System.out.println("tickets are for event "+ availableTickets);
+                    } else ticketBatch = Math.min(totalTickets, remainingCapacity);
+                    System.out.println(maximumTicketCapacity);
+                    System.out.println(availableTickets.size());
+                    System.out.println(totalTickets);
+                    System.out.println(remainingCapacity);
+                    System.out.println("ticket batch is" + ticketBatch);
+
+                    for (int i = 0; i < ticketBatch; i++) {
+                        System.out.println(("Ticket No " + currentTicket + "Added by " + vendorId));
+                        logger.info("Ticket No " + currentTicket + "Added by " + vendorId);
+                        availableTickets.offer(currentTicket);
+                        vendor.TicketSold(currentTicket);
+                        currentTicket++;
+                        totalTickets--;
+                        System.out.println("tickets are for event " + availableTickets);
+                    }
+                    //notify waiting threads
+
+                    Thread.sleep(releaseInterval);
+                    notEmpty.signalAll();
+                    break;
+                }
             }
-            //notify waiting threads
-            notEmpty.signalAll();
         }
+
         finally {
             lock.unlock();
         }
-        Thread.sleep(releaseInterval);
+
     }
 
 
-    public  Integer removeTicket(int retrievalInterval,int customerId) throws InterruptedException {
-        //total tickets out and no more on sale
+    public  void removeTicket(int retrievalInterval,int customerId, Customer customer) throws InterruptedException {
+
         Integer purchasedTicket;
         lock.lock();
         try {
-            if (availableTickets.isEmpty() && totalTickets == 0) {
-                System.out.println("All tickets sold out ");
-                return null;
-            }
+            while (true) {
+                //total tickets out and no more on sale
+                if (availableTickets.isEmpty() && totalTickets == 0) {
+                    System.out.println("All tickets sold out ");
+                    return;
+                }
+                //nothing on sale but it will be put up eventually
+                else if (totalTickets > 0 && availableTickets.isEmpty()) {
+                    System.out.println("wait for vendors to add pls");
+                    notEmpty.await();
 
-            //nothing on sale but it will be put up eventually
-            else if (totalTickets > 0 && availableTickets.isEmpty()) {
-                System.out.println("wait for vendors to add pls");
-                notEmpty.await();
-                return null;
-
-            } else {
-                purchasedTicket = availableTickets.poll();
-                System.out.println("Ticket No " + purchasedTicket + "of event  "  + "bought by " + customerId);
-                logger.info("Ticket No " + purchasedTicket + "of event  "  + "bought by " + customerId);
-                notFull.signalAll();
+                } else {
+                    purchasedTicket = availableTickets.poll();
+                    customer.ticketBought(purchasedTicket);
+                    System.out.println("Ticket No " + purchasedTicket + "of event  " + "bought by " + customerId);
+                    logger.info("Ticket No " + purchasedTicket + "of event  " + "bought by " + customerId);
+                    Thread.sleep(retrievalInterval);
+                    notFull.signalAll();
+                    break;
+                }
             }
         }
         finally {
             lock.unlock();
         }
-        Thread.sleep(retrievalInterval);
-        return purchasedTicket;
+
     }
 }

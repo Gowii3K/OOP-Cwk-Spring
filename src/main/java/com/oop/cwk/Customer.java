@@ -7,57 +7,32 @@ import java.util.logging.Logger;
 public class Customer implements Runnable{
 
 
-
-    int customerId;
-
-    public int getCustomerId() {
-        return customerId;
-    }
-
-    public void setCustomerId(int customerId) {
-        this.customerId = customerId;
-    }
-
-    public List<Integer> getBoughtTickets() {
-        return boughtTickets;
-    }
-
-    public void setBoughtTickets(List<Integer> boughtTickets) {
-        this.boughtTickets = boughtTickets;
-    }
+    private int customerId;
+    private int retrievalInterval;//get from config
+    private TicketPool ticketPool;
+    private List<Integer> boughtTickets= new ArrayList<>();
 
 
-
-    List<Integer> boughtTickets= new ArrayList<>();
-    int retrievalInterval;//get from config
-
-    int eventId;
-
-    String name;
-
-
-    TicketPool ticketPool;
+    public int getCustomerId() {return customerId;}
+    public void setCustomerId(int customerId) {this.customerId = customerId;}
+    public List<Integer> getBoughtTickets() {return boughtTickets;}
+    public void setBoughtTickets(List<Integer> boughtTickets) {this.boughtTickets = boughtTickets;}
 
     public Customer(int retrievalInterval,TicketPool ticketPool,int customerId){
         this.retrievalInterval=retrievalInterval;
         this.ticketPool=ticketPool;
         this.customerId=customerId;
     }
+
+    public void ticketBought(Integer ticketId){
+        boughtTickets.add(ticketId);
+    }
+
     @Override
     public void run() {
-
-        //create logger
-
-
         while (true) {
-
                 try {
-
-                    Integer ticket=ticketPool.removeTicket(retrievalInterval,customerId);
-                    if (ticket!=null){
-                        boughtTickets.add(ticket);
-                    }
-                    //logger.info("Customer " + customerId + " purchased a ticket.");
+                    ticketPool.removeTicket(retrievalInterval,customerId,this);
                     if (ticketPool.getTotalTickets() == 0 && ticketPool.availableTickets.isEmpty()) {
                         System.out.println("All tickets added, customer " + customerId + " is done.");
                         break;
@@ -67,17 +42,7 @@ public class Customer implements Runnable{
                     break;
 
                 }
-
-
         }
-
         System.out.println("got out customer " +customerId);
-
-
-
-
     }
-
-
 }
-//inject ticketppol

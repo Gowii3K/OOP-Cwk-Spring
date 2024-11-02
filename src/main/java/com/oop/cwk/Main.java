@@ -16,31 +16,26 @@ import java.util.Scanner;
 public class Main {
 
 
-
-    static TicketPool ticketPool = new TicketPool();
-
-
+    private static TicketPool ticketPool = new TicketPool();
     private static List<Vendor> vendors = new ArrayList<>();
+    private static List<Customer> customers= new ArrayList<>();
+    private static List<String> logs=new ArrayList<>();
+
+    public static List<String> getLogs() {
+        return logs;
+    }
 
     public static TicketPool getTicketPool() {
         return ticketPool;
     }
-
-    public static void setTicketPool(TicketPool ticketPool) {
-        Main.ticketPool = ticketPool;
-    }
-
     public static List<Vendor> getVendors() {
         return vendors;
     }
-    private static List<Customer> customers= new ArrayList<>();
+
     public static List<Customer> getCustomers() {
         return customers;
     }
 
-    public static void setVendors(List<Vendor> vendors) {
-        Main.vendors = vendors;
-    }
 
     public static void main(String[] args) throws InterruptedException {
         SpringApplication.run(Main.class, args);
@@ -63,13 +58,13 @@ public class Main {
                 config=new Config();
 
                 System.out.println("Enter Total Tickets");
-                config.totalTickets=scanner.nextInt();
+                config.setTotalTickets(scanner.nextInt());
                 System.out.println("Enter Max Ticket Capacity");
-                config.maxTicketCapacity=scanner.nextInt();
+                config.setMaxTicketCapacity(scanner.nextInt());
                 System.out.println("Enter Ticket adding rate");
-                config.ticketReleaseRate= scanner.nextInt();
+                config.setTicketReleaseRate(scanner.nextInt());
                 System.out.println("Enter Ticket selling rate");
-                config.customerRetrievalRate=scanner.nextInt();
+                config.setCustomerRetrievalRate(scanner.nextInt());
                 String myJson=gson.toJson(config);
                 System.out.println(myJson);
                 System.out.println("what do u want to name the config file");
@@ -107,7 +102,7 @@ public class Main {
 
 
         int numVendors=3;
-        int numCustomers=100;
+        int numCustomers=5;
 
 
 
@@ -122,14 +117,14 @@ public class Main {
         Thread [] customerThreads=new Thread[numCustomers];
 
 
-        ticketPool.totalTickets=config.totalTickets;
-        ticketPool.maximumTicketCapacity=config.maxTicketCapacity;
+        ticketPool.totalTickets=config.getTotalTickets();
+        ticketPool.maximumTicketCapacity=config.getMaxTicketCapacity();
 
 
 
         for (int i = 0; i < numVendors; i++) {
 
-            int ticketReleaseRate = config.ticketReleaseRate;
+            int ticketReleaseRate = config.getTicketReleaseRate();
 
             vendorObjects[i] = new Vendor(6, ticketReleaseRate, ticketPool, i + 1); // Example: different TicketsPerRelease
             vendors.add(vendorObjects[i]);
@@ -139,7 +134,7 @@ public class Main {
 
         for (int i = 0; i < numCustomers; i++) {
 
-            int customerRetrievalRate = config.customerRetrievalRate;
+            int customerRetrievalRate = config.getCustomerRetrievalRate();
 
             customerObjects[i] = new Customer(customerRetrievalRate, ticketPool, i + 1); // Example: different TicketsPerRelease
             customers.add(customerObjects[i]);
@@ -168,7 +163,7 @@ public class Main {
         }
         for(int j=0;j<numCustomers;j++){
             System.out.println(customerObjects[j]);
-            System.out.println(customerObjects[j].customerId);
+            System.out.println(customerObjects[j].getCustomerId());
         }
 
 

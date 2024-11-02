@@ -28,4 +28,9 @@ public class VendorController {
         return Main.getVendors();
     }
 
+    @GetMapping("/test2")
+    public List<Customer> getTestCustomers() {
+        return Main.getCustomers();
+    }
+
 }
