@@ -15,40 +15,48 @@ public class TicketPool {
     private final Lock lock = new ReentrantLock();
     private final Condition notFull = lock.newCondition();
     private final Condition notEmpty = lock.newCondition();
+    private final Condition pausedCondition = lock.newCondition();
     int totalTickets;
     int maximumTicketCapacity;
     ConcurrentLinkedQueue<Integer> availableTickets = new ConcurrentLinkedQueue<>();
     int currentTicket = 1;
+    public ConcurrentLinkedQueue<Integer> getAvailableTickets() {return availableTickets;}
+    public int getMaximumTicketCapacity() {return maximumTicketCapacity;}
+    public  int getTotalTickets() {return totalTickets;}
+    public  void setTotalTickets(int totalTickets) {this.totalTickets = totalTickets;}
+    private volatile boolean isPaused = false;
+    private final Lock pauseLock = new ReentrantLock();
 
-    public ConcurrentLinkedQueue<Integer> getAvailableTickets() {
-        return availableTickets;
-    }
 
-    public int getMaximumTicketCapacity() {
-        return maximumTicketCapacity;
-    }
-
-    public  int getTotalTickets() {
-        return totalTickets;
-    }
-    public  void setTotalTickets(int totalTickets) {
-        this.totalTickets = totalTickets;
-    }
-
-    static {
-        try {
-            // Set up the logger to log to a file
-            FileHandler fileHandler = new FileHandler("TicketPooltest2.log", true);
-            fileHandler.setFormatter(new SimpleFormatter());
-            logger.addHandler(fileHandler);
-            logger.setUseParentHandlers(false);
-        } catch (IOException e) {
-            throw new RuntimeException("Failed to initialize logger", e);
-        }
-    }
 
     public TicketPool() {
         System.out.println("Initializing TicketPool");
+    }
+    public void pause() {
+        isPaused = true;
+        System.out.println("TicketPool paused.");
+    }
+    public void resume() {
+            lock.lock(); // Acquire the lock
+            try {
+                isPaused = false; // Update the paused state
+                pausedCondition.signalAll(); // Notify any waiting threads
+                System.out.println("TicketPool resumed.");
+            } finally {
+                lock.unlock(); // Ensure the lock is released
+            }
+        }
+
+
+
+
+    private void checkPaused() throws InterruptedException {
+
+            while (isPaused) {
+                pausedCondition.await(); // Wait until signaled to continue
+            }
+        // Ensure the lock is released
+
     }
 
 
@@ -56,6 +64,7 @@ public class TicketPool {
         lock.lock();
         try {
             while (true) {
+                checkPaused();
                 //checks max capacity and notifies waiting threads,so they can terminate
                 if (totalTickets == 0) {
                     System.out.println("All tickets added");
@@ -76,15 +85,10 @@ public class TicketPool {
                         ticketBatch = TicketsPerRelease;
 
                     } else ticketBatch = Math.min(totalTickets, remainingCapacity);
-                    System.out.println(maximumTicketCapacity);
-                    System.out.println(availableTickets.size());
-                    System.out.println(totalTickets);
                     System.out.println(remainingCapacity);
                     System.out.println("ticket batch is" + ticketBatch);
-
                     for (int i = 0; i < ticketBatch; i++) {
                         System.out.println(("Ticket No " + currentTicket + "Added by " + vendorId));
-                        logger.info("Ticket No " + currentTicket + "Added by " + vendorId);
                         availableTickets.offer(currentTicket);
                         vendor.TicketSold(currentTicket);
                         currentTicket++;
@@ -99,7 +103,6 @@ public class TicketPool {
                 }
             }
         }
-
         finally {
             lock.unlock();
         }
@@ -113,6 +116,7 @@ public class TicketPool {
         lock.lock();
         try {
             while (true) {
+                checkPaused();
                 //total tickets out and no more on sale
                 if (availableTickets.isEmpty() && totalTickets == 0) {
                     System.out.println("All tickets sold out ");
@@ -127,7 +131,6 @@ public class TicketPool {
                     purchasedTicket = availableTickets.poll();
                     customer.ticketBought(purchasedTicket);
                     System.out.println("Ticket No " + purchasedTicket + "of event  " + "bought by " + customerId);
-                    logger.info("Ticket No " + purchasedTicket + "of event  " + "bought by " + customerId);
                     Thread.sleep(retrievalInterval);
                     notFull.signalAll();
                     break;

@@ -34,6 +34,7 @@ public  class Vendor implements Runnable{
         while (true){
 
                 try {
+
                     ticketPool.addTickets(TicketsPerRelease,releaseInterval,this.vendorId,this);
                     System.out.println("done by vendor "+vendorId);
                     if (ticketPool.totalTickets == 0) {

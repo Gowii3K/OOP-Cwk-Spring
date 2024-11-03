@@ -75154,3 +75154,169 @@ Nov 02, 2024 11:04:01 AM com.oop.cwk.TicketPool removeTicket
 INFO: Ticket No 9of event  bought by 3
 Nov 02, 2024 11:04:01 AM com.oop.cwk.TicketPool removeTicket
 INFO: Ticket No 10of event  bought by 3
+Nov 02, 2024 12:35:10 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Nov 02, 2024 12:35:10 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Nov 02, 2024 12:35:10 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Nov 02, 2024 12:35:10 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Nov 02, 2024 12:35:10 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Nov 02, 2024 12:35:10 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Nov 02, 2024 12:35:13 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 2
+Nov 02, 2024 12:35:13 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 2
+Nov 02, 2024 12:35:13 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 2
+Nov 02, 2024 12:35:13 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 2
+Nov 02, 2024 12:35:16 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  bought by 1
+Nov 02, 2024 12:35:19 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  bought by 1
+Nov 02, 2024 12:35:22 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  bought by 1
+Nov 02, 2024 12:35:25 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  bought by 1
+Nov 02, 2024 12:35:28 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  bought by 1
+Nov 02, 2024 12:35:32 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  bought by 1
+Nov 02, 2024 12:35:35 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  bought by 1
+Nov 02, 2024 12:35:38 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  bought by 1
+Nov 02, 2024 12:35:41 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  bought by 1
+Nov 02, 2024 12:44:12 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 1Added by 1
+Nov 02, 2024 12:44:12 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 2Added by 1
+Nov 02, 2024 12:44:12 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 3Added by 1
+Nov 02, 2024 12:44:12 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 4Added by 1
+Nov 02, 2024 12:44:12 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 5Added by 1
+Nov 02, 2024 12:44:12 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 6Added by 1
+Nov 02, 2024 12:44:15 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 7Added by 2
+Nov 02, 2024 12:44:15 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 8Added by 2
+Nov 02, 2024 12:44:15 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 9Added by 2
+Nov 02, 2024 12:44:15 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 10Added by 2
+Nov 02, 2024 12:44:18 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 1of event  bought by 1
+Nov 02, 2024 12:44:21 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 2of event  bought by 2
+Nov 02, 2024 12:44:24 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 3of event  bought by 2
+Nov 02, 2024 12:44:27 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 4of event  bought by 2
+Nov 02, 2024 12:44:30 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 5of event  bought by 2
+Nov 02, 2024 12:44:33 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 6of event  bought by 2
+Nov 02, 2024 12:44:36 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 7of event  bought by 2
+Nov 02, 2024 12:44:39 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 8of event  bought by 2
+Nov 02, 2024 12:44:42 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 9of event  bought by 2
+Nov 02, 2024 12:44:45 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 10of event  bought by 2
+Nov 02, 2024 12:44:48 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 11Added by 1
+Nov 02, 2024 12:44:48 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 12Added by 1
+Nov 02, 2024 12:44:48 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 13Added by 1
+Nov 02, 2024 12:44:48 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 14Added by 1
+Nov 02, 2024 12:44:48 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 15Added by 1
+Nov 02, 2024 12:44:48 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 16Added by 1
+Nov 02, 2024 12:44:51 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 17Added by 2
+Nov 02, 2024 12:44:51 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 18Added by 2
+Nov 02, 2024 12:44:51 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 19Added by 2
+Nov 02, 2024 12:44:51 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 20Added by 2
+Nov 02, 2024 12:44:54 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 11of event  bought by 1
+Nov 02, 2024 12:44:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 12of event  bought by 1
+Nov 02, 2024 12:45:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 13of event  bought by 2
+Nov 02, 2024 12:45:03 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 14of event  bought by 2
+Nov 02, 2024 12:45:06 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 15of event  bought by 3
+Nov 02, 2024 12:45:09 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 16of event  bought by 3
+Nov 02, 2024 12:45:12 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 17of event  bought by 4
+Nov 02, 2024 12:45:15 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 18of event  bought by 5
+Nov 02, 2024 12:45:18 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 19of event  bought by 5
+Nov 02, 2024 12:45:21 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 20of event  bought by 5
+Nov 02, 2024 12:45:24 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 21Added by 1
+Nov 02, 2024 12:45:24 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 22Added by 1
+Nov 02, 2024 12:45:24 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 23Added by 1
+Nov 02, 2024 12:45:24 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 24Added by 1
+Nov 02, 2024 12:45:24 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 25Added by 1
+Nov 02, 2024 12:45:24 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 26Added by 1
+Nov 02, 2024 12:45:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 27Added by 2
+Nov 02, 2024 12:45:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 28Added by 2
+Nov 02, 2024 12:45:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 29Added by 2
+Nov 02, 2024 12:45:27 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 30Added by 2
+Nov 02, 2024 12:45:30 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 21of event  bought by 1
+Nov 02, 2024 12:45:33 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 22of event  bought by 2
+Nov 02, 2024 12:45:36 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 23of event  bought by 3
+Nov 02, 2024 12:45:39 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 24of event  bought by 4
+Nov 02, 2024 12:45:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 31Added by 3
+Nov 02, 2024 12:45:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 32Added by 3
+Nov 02, 2024 12:45:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 33Added by 3
+Nov 02, 2024 12:45:42 PM com.oop.cwk.TicketPool addTickets
+INFO: Ticket No 34Added by 3
+Nov 02, 2024 12:45:51 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 25of event  bought by 3
+Nov 02, 2024 12:45:54 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 26of event  bought by 3
+Nov 02, 2024 12:45:57 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 27of event  bought by 3
+Nov 02, 2024 12:46:00 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 28of event  bought by 3
+Nov 02, 2024 12:46:03 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 29of event  bought by 3
+Nov 02, 2024 12:46:06 PM com.oop.cwk.TicketPool removeTicket
+INFO: Ticket No 30of event  bought by 3

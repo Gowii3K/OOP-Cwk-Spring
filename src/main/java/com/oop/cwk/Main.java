@@ -16,10 +16,10 @@ import java.util.Scanner;
 public class Main {
 
 
-    private static TicketPool ticketPool = new TicketPool();
-    private static List<Vendor> vendors = new ArrayList<>();
-    private static List<Customer> customers= new ArrayList<>();
-    private static List<String> logs=new ArrayList<>();
+    private static final TicketPool ticketPool = new TicketPool();
+    private static final List<Vendor> vendors = new ArrayList<>();
+    private static final List<Customer> customers= new ArrayList<>();
+    private static final List<String> logs=new ArrayList<>();
 
     public static List<String> getLogs() {
         return logs;
@@ -121,7 +121,7 @@ public class Main {
         ticketPool.maximumTicketCapacity=config.getMaxTicketCapacity();
 
 
-
+        //create vendor threads
         for (int i = 0; i < numVendors; i++) {
 
             int ticketReleaseRate = config.getTicketReleaseRate();
@@ -131,7 +131,7 @@ public class Main {
             vendorThreads[i] = new Thread(vendorObjects[i]);
             vendorThreads[i].start();
         }
-
+        //create customer threads
         for (int i = 0; i < numCustomers; i++) {
 
             int customerRetrievalRate = config.getCustomerRetrievalRate();
@@ -142,22 +142,13 @@ public class Main {
             customerThreads[i].start();
         }
 
-
-
-
-
-
+        //join threads
         for (int i = 0; i < numVendors; i++) {
             vendorThreads[i].join();
         }
-
         for (int j = 0; j < numCustomers; j++) {
                 customerThreads[j].join();
-
         }
-
-
-
         for(int i=0;i<numVendors;i++) {
             System.out.println(vendorObjects[i]);
         }
@@ -165,12 +156,5 @@ public class Main {
             System.out.println(customerObjects[j]);
             System.out.println(customerObjects[j].getCustomerId());
         }
-
-
-
-        // Create and start customer threads
-
-
-
     }
 }

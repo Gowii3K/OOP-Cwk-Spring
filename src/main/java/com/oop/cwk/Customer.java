@@ -32,6 +32,7 @@ public class Customer implements Runnable{
     public void run() {
         while (true) {
                 try {
+
                     ticketPool.removeTicket(retrievalInterval,customerId,this);
                     if (ticketPool.getTotalTickets() == 0 && ticketPool.availableTickets.isEmpty()) {
                         System.out.println("All tickets added, customer " + customerId + " is done.");
