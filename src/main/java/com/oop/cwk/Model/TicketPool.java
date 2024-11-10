@@ -8,11 +8,12 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
-
 @Component
 public class TicketPool {
 
     static Logger logger=Logger.getLogger(TicketPool.class.getName());
+
+
     private final Lock lock = new ReentrantLock();
     private final Condition notFull = lock.newCondition();
     private final Condition notEmpty = lock.newCondition();
@@ -40,6 +41,7 @@ public class TicketPool {
         isPaused = true;
         System.out.println("TicketPool paused.");
     }
+
     public void resume() {
             lock.lock(); // Acquire the lock
             try {
