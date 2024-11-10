@@ -1,18 +1,12 @@
 package com.oop.cwk;
-
-import com.google.gson.Gson;
-
 import com.oop.cwk.Model.Config;
 import com.oop.cwk.Model.Customer;
 import com.oop.cwk.Model.TicketPool;
 import com.oop.cwk.Model.Vendor;
+import com.oop.cwk.Service.ConfigService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
-
-
-import java.io.FileReader;
-import java.io.FileWriter;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -34,28 +28,26 @@ public class Main {
         ApplicationContext context=SpringApplication.run(Main.class, args);
         TicketPool ticketPool=context.getBean(TicketPool.class);
 
-
         // initialize TicketPool with values from config
-        Gson gson = new Gson();
-        Config config=context.getBean(Config.class);
+        ConfigService configService=context.getBean(ConfigService.class);
         Scanner scanner=new Scanner(System.in);
-
         System.out.println("Welcome to the program Please select an Option");
         System.out.println("1. Create New Config File");
         System.out.println("2. Load Existing Config File");
 
         int option=scanner.nextInt();
+        Config config = null;
         switch (option){
             case 1:
-                config=newConfig(config,gson,scanner);
+                config=configService.createNewConfig(scanner);
                 break;
-
             case 2:
-                config=loadConfig(config,gson,scanner);
+                config=configService.loadConfig(scanner);
                 break;
         }
         ticketPool.setTotalTickets(config.getTotalTickets());
         ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
+
 
         int numVendors=3;
         int numCustomers=5;
@@ -99,47 +91,5 @@ public class Main {
             System.out.println(customerObjects[j]);
             System.out.println(customerObjects[j].getCustomerId());
         }
-    }
-
-    public static Config loadConfig(Config config, Gson gson, Scanner scanner){
-        System.out.println("Enter name of the config file you want to load from");
-        String loadName=scanner.next();
-        try {
-            FileReader fileReader = new FileReader(loadName + ".json");
-            config=gson.fromJson(fileReader,Config.class);
-            System.out.println(config);
-        }
-        catch (Exception ignored){
-            System.out.println("Error writing config file");
-        }
-        return config;
-    }
-
-    public static Config newConfig(Config config, Gson gson, Scanner scanner){
-        System.out.println("Enter Total Tickets");
-        config.setTotalTickets(scanner.nextInt());
-        System.out.println("Enter Max Ticket Capacity");
-        config.setMaxTicketCapacity(scanner.nextInt());
-        System.out.println("Enter Ticket adding rate");
-        config.setTicketReleaseRate(scanner.nextInt());
-        System.out.println("Enter Ticket selling rate");
-        config.setCustomerRetrievalRate(scanner.nextInt());
-        String myJson=gson.toJson(config);
-        System.out.println(myJson);
-        System.out.println("what do u want to name the config file");
-        String name=scanner.next();
-        try {
-            FileWriter writer= new FileWriter(name+".json");
-            gson.toJson(config,writer);
-            writer.close();
-        }
-        catch (Exception e){
-            System.out.println("Error writing config file");
-        }
-        return config;
-    }
-
-    public void createVendors(int numVendors,Vendor[] vendorObjects){
-
     }
 }
