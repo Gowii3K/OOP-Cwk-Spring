@@ -33,10 +33,9 @@ public  class Vendor implements Runnable{
         while (true){
 
                 try {
-
                     ticketPool.addTickets(releaseInterval,this.vendorId,this);
                     System.out.println("done by vendor "+vendorId);
-                    if (ticketPool.totalTickets == 0) {
+                    if (ticketPool.getTotalTickets() == 0) {
                         System.out.println("All tickets added, vendor " + vendorId + " is done.");
                         break;
                     }

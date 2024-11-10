@@ -38,50 +38,24 @@ public class Main {
         // initialize TicketPool with values from config
         Gson gson = new Gson();
         Config config=context.getBean(Config.class);
+        Scanner scanner=new Scanner(System.in);
 
         System.out.println("Welcome to the program Please select an Option");
         System.out.println("1. Create New Config File");
         System.out.println("2. Load Existing Config File");
-        Scanner scanner=new Scanner(System.in);
+
         int option=scanner.nextInt();
         switch (option){
             case 1:
-                System.out.println("Enter Total Tickets");
-                config.setTotalTickets(scanner.nextInt());
-                System.out.println("Enter Max Ticket Capacity");
-                config.setMaxTicketCapacity(scanner.nextInt());
-                System.out.println("Enter Ticket adding rate");
-                config.setTicketReleaseRate(scanner.nextInt());
-                System.out.println("Enter Ticket selling rate");
-                config.setCustomerRetrievalRate(scanner.nextInt());
-                String myJson=gson.toJson(config);
-                System.out.println(myJson);
-                System.out.println("what do u want to name the config file");
-                String name=scanner.next();
-                try {
-                    FileWriter writer= new FileWriter(name+".json");
-                    gson.toJson(config,writer);
-                    writer.close();
-                }
-                catch (Exception e){
-                    System.out.println("Error writing config file");
-                }
-
-
+                config=newConfig(config,gson,scanner);
                 break;
+
             case 2:
-                System.out.println("Enter name of the config file you want to load from");
-                String loadName=scanner.next();
-                try {
-                    FileReader fileReader = new FileReader(loadName + ".json");
-                    config=gson.fromJson(fileReader,Config.class);
-                    System.out.println(config);
-                }
-                catch (Exception ignored){
-                    System.out.println("Error writing config file");
-                }
+                config=loadConfig(config,gson,scanner);
                 break;
         }
+        ticketPool.setTotalTickets(config.getTotalTickets());
+        ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
 
         int numVendors=3;
         int numCustomers=5;
@@ -89,15 +63,14 @@ public class Main {
         Customer[]customerObjects = new Customer[numCustomers];
         Thread [] vendorThreads=new Thread[numVendors];
         Thread [] customerThreads=new Thread[numCustomers];
+        int ticketReleaseRate = config.getTicketReleaseRate();
+        int customerRetrievalRate = config.getCustomerRetrievalRate();
 
-
-        ticketPool.setTotalTickets(config.getTotalTickets());
-        ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
 
 
         //create vendor threads
         for (int i = 0; i < numVendors; i++) {
-            int ticketReleaseRate = config.getTicketReleaseRate();
+
             vendorObjects[i] = new Vendor(ticketReleaseRate, ticketPool, i + 1); // Example: different TicketsPerRelease
             vendors.add(vendorObjects[i]);
             vendorThreads[i] = new Thread(vendorObjects[i]);
@@ -105,12 +78,13 @@ public class Main {
         }
         //create customer threads
         for (int i = 0; i < numCustomers; i++) {
-            int customerRetrievalRate = config.getCustomerRetrievalRate();
+
             customerObjects[i] = new Customer(customerRetrievalRate, ticketPool, i + 1); // Example: different TicketsPerRelease
             customers.add(customerObjects[i]);
             customerThreads[i]=new Thread(customerObjects[i]);
             customerThreads[i].start();
         }
+
         //join threads
         for (int i = 0; i < numVendors; i++) {
             vendorThreads[i].join();
@@ -125,5 +99,47 @@ public class Main {
             System.out.println(customerObjects[j]);
             System.out.println(customerObjects[j].getCustomerId());
         }
+    }
+
+    public static Config loadConfig(Config config, Gson gson, Scanner scanner){
+        System.out.println("Enter name of the config file you want to load from");
+        String loadName=scanner.next();
+        try {
+            FileReader fileReader = new FileReader(loadName + ".json");
+            config=gson.fromJson(fileReader,Config.class);
+            System.out.println(config);
+        }
+        catch (Exception ignored){
+            System.out.println("Error writing config file");
+        }
+        return config;
+    }
+
+    public static Config newConfig(Config config, Gson gson, Scanner scanner){
+        System.out.println("Enter Total Tickets");
+        config.setTotalTickets(scanner.nextInt());
+        System.out.println("Enter Max Ticket Capacity");
+        config.setMaxTicketCapacity(scanner.nextInt());
+        System.out.println("Enter Ticket adding rate");
+        config.setTicketReleaseRate(scanner.nextInt());
+        System.out.println("Enter Ticket selling rate");
+        config.setCustomerRetrievalRate(scanner.nextInt());
+        String myJson=gson.toJson(config);
+        System.out.println(myJson);
+        System.out.println("what do u want to name the config file");
+        String name=scanner.next();
+        try {
+            FileWriter writer= new FileWriter(name+".json");
+            gson.toJson(config,writer);
+            writer.close();
+        }
+        catch (Exception e){
+            System.out.println("Error writing config file");
+        }
+        return config;
+    }
+
+    public void createVendors(int numVendors,Vendor[] vendorObjects){
+
     }
 }

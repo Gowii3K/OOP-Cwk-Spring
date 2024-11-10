@@ -17,10 +17,10 @@ public class TicketPool {
     private final Condition notFull = lock.newCondition();
     private final Condition notEmpty = lock.newCondition();
     private final Condition pausedCondition = lock.newCondition();
-    int totalTickets;
-    int maximumTicketCapacity;
-    ConcurrentLinkedQueue<Integer> availableTickets = new ConcurrentLinkedQueue<>();
-    int currentTicket = 1;
+    private int totalTickets;
+    private int maximumTicketCapacity;
+    private ConcurrentLinkedQueue<Integer> availableTickets = new ConcurrentLinkedQueue<>();
+    private int currentTicket = 1;
     public ConcurrentLinkedQueue<Integer> getAvailableTickets() {return availableTickets;}
     public int getMaximumTicketCapacity() {return maximumTicketCapacity;}
 

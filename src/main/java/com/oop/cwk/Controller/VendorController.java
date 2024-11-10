@@ -18,6 +18,7 @@ public class VendorController {
 
     @Autowired
     TicketPool ticketPool;
+
     @GetMapping("/vendors")
     public TicketPool getVendors() {
         return ticketPool;

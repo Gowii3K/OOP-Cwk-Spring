@@ -1,5 +1,4 @@
 package com.oop.cwk.Model;
-
 import java.util.ArrayList;
 import java.util.List;
 
@@ -11,12 +10,8 @@ public class Customer implements Runnable{
     private TicketPool ticketPool;
     private List<Integer> boughtTickets= new ArrayList<>();
 
-
     public int getCustomerId() {return customerId;}
-    public void setCustomerId(int customerId) {this.customerId = customerId;}
     public List<Integer> getBoughtTickets() {return boughtTickets;}
-    public void setBoughtTickets(List<Integer> boughtTickets) {this.boughtTickets = boughtTickets;}
-
     public Customer(int retrievalInterval,TicketPool ticketPool,int customerId){
         this.retrievalInterval=retrievalInterval;
         this.ticketPool=ticketPool;
@@ -33,7 +28,7 @@ public class Customer implements Runnable{
                 try {
 
                     ticketPool.removeTicket(retrievalInterval,customerId,this);
-                    if (ticketPool.getTotalTickets() == 0 && ticketPool.availableTickets.isEmpty()) {
+                    if (ticketPool.getTotalTickets() == 0 && ticketPool.getAvailableTickets().isEmpty()) {
                         System.out.println("All tickets added, customer " + customerId + " is done.");
                         break;
                     }
