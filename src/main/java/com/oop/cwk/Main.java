@@ -126,7 +126,7 @@ public class Main {
 
             int ticketReleaseRate = config.getTicketReleaseRate();
 
-            vendorObjects[i] = new Vendor(6, ticketReleaseRate, ticketPool, i + 1); // Example: different TicketsPerRelease
+            vendorObjects[i] = new Vendor(6, ticketPool, i + 1); // Example: different TicketsPerRelease
             vendors.add(vendorObjects[i]);
             vendorThreads[i] = new Thread(vendorObjects[i]);
             vendorThreads[i].start();

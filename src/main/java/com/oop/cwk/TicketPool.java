@@ -47,20 +47,14 @@ public class TicketPool {
             }
         }
 
-
-
-
     private void checkPaused() throws InterruptedException {
 
             while (isPaused) {
                 pausedCondition.await(); // Wait until signaled to continue
             }
-        // Ensure the lock is released
-
     }
 
-
-    public  void addTickets(int TicketsPerRelease, int releaseInterval,int vendorId ,Vendor vendor) throws InterruptedException {
+    public  void addTickets( int releaseInterval,int vendorId ,Vendor vendor) throws InterruptedException {
         lock.lock();
         try {
             while (true) {
@@ -77,24 +71,13 @@ public class TicketPool {
                 }
                 // if neither of the above condition is satisfied proceed with adding tickets
                 else {
-                    int remainingCapacity = maximumTicketCapacity - availableTickets.size();
-                    int ticketBatch;
-
-                    // find the least amount between tickets per release, remaining ticket slots, and total tickets
-                    if (TicketsPerRelease <= remainingCapacity && TicketsPerRelease <= totalTickets) {
-                        ticketBatch = TicketsPerRelease;
-
-                    } else ticketBatch = Math.min(totalTickets, remainingCapacity);
-                    System.out.println(remainingCapacity);
-                    System.out.println("ticket batch is" + ticketBatch);
-                    for (int i = 0; i < ticketBatch; i++) {
                         System.out.println(("Ticket No " + currentTicket + "Added by " + vendorId));
                         availableTickets.offer(currentTicket);
                         vendor.TicketSold(currentTicket);
                         currentTicket++;
                         totalTickets--;
-                        System.out.println("tickets are for event " + availableTickets);
-                    }
+                        System.out.println("Available current tickets are " + availableTickets);
+
                     //notify waiting threads
 
                     Thread.sleep(releaseInterval);
@@ -108,7 +91,6 @@ public class TicketPool {
         }
 
     }
-
 
     public  void removeTicket(int retrievalInterval,int customerId, Customer customer) throws InterruptedException {
 
@@ -130,7 +112,7 @@ public class TicketPool {
                 } else {
                     purchasedTicket = availableTickets.poll();
                     customer.ticketBought(purchasedTicket);
-                    System.out.println("Ticket No " + purchasedTicket + "of event  " + "bought by " + customerId);
+                    System.out.println("Ticket No " + purchasedTicket + "bought by " + customerId);
                     Thread.sleep(retrievalInterval);
                     notFull.signalAll();
                     break;
