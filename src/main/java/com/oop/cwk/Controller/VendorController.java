@@ -1,5 +1,11 @@
-package com.oop.cwk;
+package com.oop.cwk.Controller;
 
+import com.oop.cwk.*;
+import com.oop.cwk.DTO.TicketDTO;
+import com.oop.cwk.Model.Customer;
+import com.oop.cwk.Model.TicketPool;
+import com.oop.cwk.Model.Vendor;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -9,16 +15,18 @@ import java.util.List;
 @RestController
 @CrossOrigin
 public class VendorController {
+
+    @Autowired
+    TicketPool ticketPool;
     @GetMapping("/vendors")
     public TicketPool getVendors() {
-        return Main.getTicketPool();
+        return ticketPool;
 
     }
 
     @GetMapping("/customers")
     public TicketDTO getCustomers() {
-        TicketPool ticketPool = Main.getTicketPool();
-        List<Customer> customers=Main.getCustomers();
+        List<Customer> customers= Main.getCustomers();
         List<Vendor> vendors=Main.getVendors();
         return new TicketDTO(ticketPool,customers,vendors);
     }
@@ -34,14 +42,13 @@ public class VendorController {
     }
     @GetMapping("/pause")
     public String pauseThreads() {
-        TicketPool ticketPool = Main.getTicketPool();
+
         ticketPool.pause();
         return "All threads are paused.";
     }
 
     @GetMapping("/resume")
     public String resumeThreads() {
-        TicketPool ticketPool = Main.getTicketPool();
         ticketPool.resume();
         return "All threads are resumed.";
     }

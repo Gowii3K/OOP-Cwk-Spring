@@ -1,4 +1,4 @@
-package com.oop.cwk;
+package com.oop.cwk.Model;
 
 import java.util.ArrayList;
 import java.util.List;

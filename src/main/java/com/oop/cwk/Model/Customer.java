@@ -1,8 +1,7 @@
-package com.oop.cwk;
+package com.oop.cwk.Model;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.logging.Logger;
 
 public class Customer implements Runnable{
 

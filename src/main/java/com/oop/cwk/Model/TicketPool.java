@@ -1,14 +1,15 @@
-package com.oop.cwk;
-import java.io.IOException;
+package com.oop.cwk.Model;
+
+import org.springframework.stereotype.Component;
+
 import java.util.concurrent.ConcurrentLinkedQueue;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
-import java.util.logging.FileHandler;
-import java.util.logging.SimpleFormatter;
 
 
+@Component
 public class TicketPool {
 
     static Logger logger=Logger.getLogger(TicketPool.class.getName());
@@ -22,11 +23,14 @@ public class TicketPool {
     int currentTicket = 1;
     public ConcurrentLinkedQueue<Integer> getAvailableTickets() {return availableTickets;}
     public int getMaximumTicketCapacity() {return maximumTicketCapacity;}
+
+    public void setMaximumTicketCapacity(int maximumTicketCapacity) {
+        this.maximumTicketCapacity = maximumTicketCapacity;
+    }
+
     public  int getTotalTickets() {return totalTickets;}
     public  void setTotalTickets(int totalTickets) {this.totalTickets = totalTickets;}
     private volatile boolean isPaused = false;
-    private final Lock pauseLock = new ReentrantLock();
-
 
 
     public TicketPool() {
