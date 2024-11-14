@@ -12,7 +12,7 @@ import java.util.Scanner;
 @Service
 public class ConfigService {
 
-    Config config=new Config();
+    Config config= null;
     Gson gson = new Gson();
 
     public Config createNewConfig(Scanner scanner) {
@@ -55,10 +55,7 @@ public class ConfigService {
             maxTicketCapacity = scanner.nextInt();
         }while (maxTicketCapacity <=0);
 
-        config.setTotalTickets(totalTickets);
-        config.setTicketReleaseRate(ticketReleaseRate);
-        config.setCustomerRetrievalRate(customerRetrievalRate);
-        config.setMaxTicketCapacity(maxTicketCapacity);
+        config=new Config(totalTickets,ticketReleaseRate,customerRetrievalRate,maxTicketCapacity);
 
 
 
@@ -83,7 +80,6 @@ public class ConfigService {
 
         try {
             while (true) {
-                System.out.println(config);
                 System.out.println("Enter name of the config file you want to load from");
                 String loadName=scanner.next();
                 File f = new File(loadName + ".json");
@@ -94,7 +90,7 @@ public class ConfigService {
                     break;
                 }
                 else {
-                    System.out.println("file not found");
+                    System.out.println("File not found");
                 }
             }
 

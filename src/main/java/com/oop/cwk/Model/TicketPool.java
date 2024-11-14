@@ -13,30 +13,42 @@ public class TicketPool {
 
     static Logger logger=Logger.getLogger(TicketPool.class.getName());
 
-
+    //locks and conditions
     private final Lock lock = new ReentrantLock();
     private final Condition notFull = lock.newCondition();
     private final Condition notEmpty = lock.newCondition();
     private final Condition pausedCondition = lock.newCondition();
+
+    //Fields
     private int totalTickets;
     private int maximumTicketCapacity;
-    private ConcurrentLinkedQueue<Integer> availableTickets = new ConcurrentLinkedQueue<>();
+    private final ConcurrentLinkedQueue<Ticket> availableTickets = new ConcurrentLinkedQueue<>();
     private int currentTicket = 1;
-    public ConcurrentLinkedQueue<Integer> getAvailableTickets() {return availableTickets;}
-    public int getMaximumTicketCapacity() {return maximumTicketCapacity;}
 
+    //Getters and Setters
+    public ConcurrentLinkedQueue<Ticket> getAvailableTickets() {
+        return availableTickets;
+    }
+    public int getMaximumTicketCapacity() {
+        return maximumTicketCapacity;
+    }
     public void setMaximumTicketCapacity(int maximumTicketCapacity) {
         this.maximumTicketCapacity = maximumTicketCapacity;
     }
-
-    public  int getTotalTickets() {return totalTickets;}
-    public  void setTotalTickets(int totalTickets) {this.totalTickets = totalTickets;}
+    public  int getTotalTickets() {
+        return totalTickets;
+    }
+    public  void setTotalTickets(int totalTickets) {
+        this.totalTickets = totalTickets;
+    }
     private volatile boolean isPaused = false;
 
 
     public TicketPool() {
         System.out.println("Initializing TicketPool");
     }
+
+
     public void pause() {
         isPaused = true;
         System.out.println("TicketPool paused.");
@@ -78,17 +90,16 @@ public class TicketPool {
                 // if neither of the above condition is satisfied proceed with adding tickets
                 else {
                         System.out.println(("Ticket No " + currentTicket + "Added by " + vendorId));
-                        availableTickets.offer(currentTicket);
+                        Ticket ticket=new Ticket(currentTicket);
+                        availableTickets.offer(ticket);
                         vendor.TicketSold(currentTicket);
                         currentTicket++;
                         totalTickets--;
                         System.out.println("Available current tickets are " + availableTickets);
-
-                    //notify waiting threads
-
-                    Thread.sleep(releaseInterval);
-                    notEmpty.signalAll();
-                    break;
+                        //notify waiting threads
+                        Thread.sleep(releaseInterval);
+                        notEmpty.signalAll();
+                        break;
                 }
             }
         }
@@ -100,7 +111,7 @@ public class TicketPool {
 
     public  void removeTicket(int retrievalInterval,int customerId, Customer customer) throws InterruptedException {
 
-        Integer purchasedTicket;
+        Ticket purchasedTicket;
         lock.lock();
         try {
             while (true) {
@@ -115,10 +126,11 @@ public class TicketPool {
                     System.out.println("wait for vendors to add pls");
                     notEmpty.await();
 
+                //if neither of the above conditions are satisfied continue with removing a ticket
                 } else {
                     purchasedTicket = availableTickets.poll();
-                    customer.ticketBought(purchasedTicket);
-                    System.out.println("Ticket No " + purchasedTicket + "bought by " + customerId);
+                    customer.ticketBought(purchasedTicket.getId());
+                    System.out.println("Ticket No " + purchasedTicket.getId() + "bought by " + customerId);
                     Thread.sleep(retrievalInterval);
                     notFull.signalAll();
                     break;

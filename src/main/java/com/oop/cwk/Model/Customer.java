@@ -5,13 +5,18 @@ import java.util.List;
 public class Customer implements Runnable{
 
 
-    private int customerId;
-    private int retrievalInterval;//get from config
-    private TicketPool ticketPool;
-    private List<Integer> boughtTickets= new ArrayList<>();
+    private final int customerId;
+    private final int retrievalInterval;//get from config
+    private final TicketPool ticketPool;
+    private final List<Integer> boughtTickets= new ArrayList<>();
 
-    public int getCustomerId() {return customerId;}
-    public List<Integer> getBoughtTickets() {return boughtTickets;}
+    public int getCustomerId() {
+        return customerId;
+    }
+    public List<Integer> getBoughtTickets() {
+        return boughtTickets;
+    }
+
     public Customer(int retrievalInterval,TicketPool ticketPool,int customerId){
         this.retrievalInterval=retrievalInterval;
         this.ticketPool=ticketPool;
@@ -29,7 +34,7 @@ public class Customer implements Runnable{
 
                     ticketPool.removeTicket(retrievalInterval,customerId,this);
                     if (ticketPool.getTotalTickets() == 0 && ticketPool.getAvailableTickets().isEmpty()) {
-                        System.out.println("All tickets added, customer " + customerId + " is done.");
+                        System.out.println("All tickets bought,Customer " +customerId +" Finished execution.. Terminating ");
                         break;
                     }
                 } catch (InterruptedException e) {
@@ -38,6 +43,5 @@ public class Customer implements Runnable{
 
                 }
         }
-        System.out.println("got out customer " +customerId);
     }
 }

@@ -63,7 +63,7 @@ public class Main {
         //create vendor threads
         for (int i = 0; i < numVendors; i++) {
 
-            vendorObjects[i] = new Vendor(ticketReleaseRate, ticketPool, i + 1); // Example: different TicketsPerRelease
+            vendorObjects[i] = new Vendor(ticketReleaseRate, ticketPool, i + 1); //
             vendors.add(vendorObjects[i]);
             vendorThreads[i] = new Thread(vendorObjects[i]);
             vendorThreads[i].start();
@@ -71,7 +71,7 @@ public class Main {
         //create customer threads
         for (int i = 0; i < numCustomers; i++) {
 
-            customerObjects[i] = new Customer(customerRetrievalRate, ticketPool, i + 1); // Example: different TicketsPerRelease
+            customerObjects[i] = new Customer(customerRetrievalRate, ticketPool, i + 1);
             customers.add(customerObjects[i]);
             customerThreads[i]=new Thread(customerObjects[i]);
             customerThreads[i].start();

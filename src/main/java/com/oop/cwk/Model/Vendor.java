@@ -5,10 +5,10 @@ import java.util.List;
 
 public  class Vendor implements Runnable{
 
-    private int vendorId;//unique id for each vendor
-    private int releaseInterval;//get from config
-    private TicketPool ticketPool;
-    private List<Integer> soldTickets=new ArrayList<>();
+    private final int vendorId;//unique id for each vendor
+    private final int releaseInterval;//get from config
+    private final TicketPool ticketPool;
+    private final List<Integer> soldTickets=new ArrayList<>();
 
 
     public int getVendorId() {
@@ -34,9 +34,8 @@ public  class Vendor implements Runnable{
 
                 try {
                     ticketPool.addTickets(releaseInterval,this.vendorId,this);
-                    System.out.println("done by vendor "+vendorId);
                     if (ticketPool.getTotalTickets() == 0) {
-                        System.out.println("All tickets added, vendor " + vendorId + " is done.");
+                        System.out.println("All tickets added, Vendor " + vendorId + "Finished execution.. Terminating ");
                         break;
                     }
                 } catch (InterruptedException e) {
@@ -44,8 +43,6 @@ public  class Vendor implements Runnable{
                     break;
                 }
             }
-        System.out.println("got out vendor" +vendorId);
-
     }
 
 

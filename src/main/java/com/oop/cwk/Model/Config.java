@@ -8,8 +8,12 @@ public class Config {
      private int customerRetrievalRate;
      private int maxTicketCapacity;
 
-     public Config(){
-          System.out.println("Config initialized");
+
+     public Config(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) {
+          this.totalTickets = totalTickets;
+          this.ticketReleaseRate = ticketReleaseRate;
+          this.customerRetrievalRate = customerRetrievalRate;
+          this.maxTicketCapacity = maxTicketCapacity;
      }
 
      public int getTotalTickets() {

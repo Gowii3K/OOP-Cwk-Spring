@@ -16,8 +16,12 @@ import java.util.List;
 @CrossOrigin
 public class VendorController {
 
-    @Autowired
     TicketPool ticketPool;
+
+    @Autowired
+    public VendorController(TicketPool ticketPool) {
+        this.ticketPool = ticketPool;
+    }
 
     @GetMapping("/vendors")
     public TicketPool getVendors() {
