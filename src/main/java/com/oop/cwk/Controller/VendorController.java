@@ -45,17 +45,6 @@ public class VendorController {
     public List<Customer> getTestCustomers() {
         return Main.getCustomers();
     }
-    @GetMapping("/pause")
-    public String pauseThreads() {
 
-        ticketPool.pause();
-        return "All threads are paused.";
-    }
-
-    @GetMapping("/resume")
-    public String resumeThreads() {
-        ticketPool.resume();
-        return "All threads are resumed.";
-    }
 
 }

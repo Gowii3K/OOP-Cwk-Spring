@@ -4,6 +4,7 @@ import com.oop.cwk.Model.Customer;
 import com.oop.cwk.Model.TicketPool;
 import com.oop.cwk.Model.Vendor;
 import com.oop.cwk.Service.ConfigService;
+import com.oop.cwk.Service.TicketPoolService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
@@ -27,6 +28,7 @@ public class Main {
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext context=SpringApplication.run(Main.class, args);
         TicketPool ticketPool=context.getBean(TicketPool.class);
+        TicketPoolService ticketPoolService=context.getBean(TicketPoolService.class);
 
         // initialize TicketPool with values from config
         ConfigService configService=context.getBean(ConfigService.class);
@@ -63,7 +65,7 @@ public class Main {
         //create vendor threads
         for (int i = 0; i < numVendors; i++) {
 
-            vendorObjects[i] = new Vendor(ticketReleaseRate, ticketPool, i + 1); //
+            vendorObjects[i] = new Vendor(ticketReleaseRate, ticketPool, i + 1,ticketPoolService); //
             vendors.add(vendorObjects[i]);
             vendorThreads[i] = new Thread(vendorObjects[i]);
             vendorThreads[i].start();
@@ -71,7 +73,7 @@ public class Main {
         //create customer threads
         for (int i = 0; i < numCustomers; i++) {
 
-            customerObjects[i] = new Customer(customerRetrievalRate, ticketPool, i + 1);
+            customerObjects[i] = new Customer(i+1,customerRetrievalRate,ticketPoolService,ticketPool);
             customers.add(customerObjects[i]);
             customerThreads[i]=new Thread(customerObjects[i]);
             customerThreads[i].start();
