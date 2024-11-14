@@ -24,6 +24,11 @@ public class Main {
         return customers;
     }
 
+    private static Config config;
+
+    public static Config getConfig() {
+        return config;
+    }
 
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext context=SpringApplication.run(Main.class, args);
@@ -38,7 +43,7 @@ public class Main {
         System.out.println("2. Load Existing Config File");
 
         int option=scanner.nextInt();
-        Config config = null;
+
         switch (option){
             case 1:
                 config=configService.createNewConfig(scanner);
@@ -47,9 +52,14 @@ public class Main {
                 config=configService.loadConfig(scanner);
                 break;
         }
+
+        startTicketPool(config,ticketPool,ticketPoolService);
+
+    }
+
+    public static void startTicketPool(Config config,TicketPool ticketPool,TicketPoolService ticketPoolService) throws InterruptedException {
         ticketPool.setTotalTickets(config.getTotalTickets());
         ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
-
 
         int numVendors=3;
         int numCustomers=5;
@@ -59,8 +69,6 @@ public class Main {
         Thread [] customerThreads=new Thread[numCustomers];
         int ticketReleaseRate = config.getTicketReleaseRate();
         int customerRetrievalRate = config.getCustomerRetrievalRate();
-
-
 
         //create vendor threads
         for (int i = 0; i < numVendors; i++) {
@@ -84,7 +92,7 @@ public class Main {
             vendorThreads[i].join();
         }
         for (int j = 0; j < numCustomers; j++) {
-                customerThreads[j].join();
+            customerThreads[j].join();
         }
         for(int i=0;i<numVendors;i++) {
             System.out.println(vendorObjects[i]);
@@ -93,5 +101,22 @@ public class Main {
             System.out.println(customerObjects[j]);
             System.out.println(customerObjects[j].getCustomerId());
         }
+
+
+    }
+
+    public static void restartTicketPool(Config config,TicketPool ticketPool) {
+        ticketPool.getAvailableTickets().clear();
+        ticketPool.setTotalTickets(config.getTotalTickets());
+        ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
+        ticketPool.setCurrentTicket(1);
+
+        for (Vendor vendor : vendors) {
+            vendor.resetVendor();
+        }
+        for (Customer customer : customers) {
+            customer.resetCustomer();
+        }
+
     }
 }

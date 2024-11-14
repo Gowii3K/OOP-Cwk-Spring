@@ -40,6 +40,10 @@ public class TicketPool {
         return currentTicket;
     }
 
+    public void setCurrentTicket(int currentTicket) {
+        this.currentTicket = currentTicket;
+    }
+
     public void incrementCurrentTicket() {
         currentTicket++;
     }

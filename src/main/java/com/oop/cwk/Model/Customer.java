@@ -27,8 +27,12 @@ public class Customer implements Runnable{
         return boughtTickets;
     }
 
+
     public void ticketBought(Integer ticketId){
         boughtTickets.add(ticketId);
+    }
+    public void resetCustomer(){
+        boughtTickets.clear();
     }
 
 

@@ -32,10 +32,13 @@ public  class Vendor implements Runnable{
         soldTickets.add(ticketId);
     }
 
+    public void resetVendor(){
+        soldTickets.clear();
+    }
+
     @Override
     public void run() {
         while (true){
-
             ticketPoolService.addTicket(releaseInterval,this.vendorId,this);
             if (ticketPool.getTotalTickets() == 0) {
                 System.out.println("All tickets added, Vendor " + vendorId + "Finished execution.. Terminating ");

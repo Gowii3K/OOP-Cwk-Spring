@@ -5,6 +5,7 @@ import com.oop.cwk.DTO.TicketDTO;
 import com.oop.cwk.Model.Customer;
 import com.oop.cwk.Model.TicketPool;
 import com.oop.cwk.Model.Vendor;
+import com.oop.cwk.Service.TicketPoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -17,10 +18,12 @@ import java.util.List;
 public class VendorController {
 
     TicketPool ticketPool;
+    TicketPoolService ticketPoolService;
 
     @Autowired
-    public VendorController(TicketPool ticketPool) {
+    public VendorController(TicketPool ticketPool, TicketPoolService ticketPoolService) {
         this.ticketPool = ticketPool;
+        this.ticketPoolService = ticketPoolService;
     }
 
     @GetMapping("/vendors")
@@ -46,5 +49,20 @@ public class VendorController {
         return Main.getCustomers();
     }
 
+    @GetMapping("/pause")
+    public String pauseThreads() {
+        ticketPoolService.stopTicketPool();
+        return "All threads are paused.";
+    }
+
+    @GetMapping("/resume")
+    public String resumeThreads() {
+        if(TicketPoolService.getIsStopped()){
+            System.out.println("Restarted");
+            Main.restartTicketPool(Main.getConfig(),ticketPool);
+            ticketPoolService.resume();
+        }
+        return "All threads are resumed.";
+    }
 
 }
