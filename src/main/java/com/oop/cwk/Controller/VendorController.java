@@ -36,7 +36,7 @@ public class VendorController {
     public TicketDTO getCustomers() {
         List<Customer> customers= Main.getCustomers();
         List<Vendor> vendors=Main.getVendors();
-        return new TicketDTO(ticketPool,customers,vendors);
+        return new TicketDTO(ticketPool,customers,vendors,ticketPoolService);
     }
 
     @GetMapping("/test")
@@ -59,7 +59,7 @@ public class VendorController {
     public String resumeThreads() {
         if(TicketPoolService.getIsStopped()){
             System.out.println("Restarted");
-            Main.restartTicketPool(Main.getConfig(),ticketPool);
+            Main.restartTicketPool(Main.getConfig(),ticketPool,ticketPoolService);
             ticketPoolService.resume();
         }
         return "All threads are resumed.";

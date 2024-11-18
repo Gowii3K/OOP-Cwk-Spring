@@ -7,9 +7,12 @@ import com.oop.cwk.Model.Vendor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
+import java.util.logging.Logger;
 
 @Service
 public class TicketPoolService {
@@ -19,6 +22,14 @@ public class TicketPoolService {
     public TicketPoolService(TicketPool ticketPool) {
         this.ticketPool = ticketPool;
         System.out.println("Ticket Pool Service Created");
+    }
+
+    private static Logger logger = Logger.getLogger(TicketPoolService.class.getName());
+    private  final List<String> logs = new ArrayList<>();
+
+
+    public List<String> getLogs() {
+        return logs;
     }
 
     private final Lock lock = new ReentrantLock();
@@ -69,6 +80,8 @@ public class TicketPoolService {
                     ticketPool.getAvailableTickets().offer(ticket);
                     vendor.TicketSold(ticketPool.getCurrentTicket());
                     System.out.println("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
+                    logger.info("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
+                    logs.add("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
                     ticketPool.decrementTotalTickets();
                     ticketPool.incrementCurrentTicket();
                     Thread.sleep(releaseInterval);
@@ -83,7 +96,6 @@ public class TicketPoolService {
             }
         finally {
             System.out.println("Vendor "+vendorId+" Released Lock");
-
             lock.unlock();
         }
     }
@@ -101,6 +113,8 @@ public class TicketPoolService {
                     Ticket ticket = ticketPool.getAvailableTickets().poll();
                     customer.ticketBought(ticket.getId());
                     System.out.println("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
+                    logger.warning("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
+                    logs.add("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
                     Thread.sleep(retrievalInterval);
                     notFull.signalAll();
                     return;

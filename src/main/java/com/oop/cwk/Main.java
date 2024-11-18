@@ -63,8 +63,6 @@ public class Main {
 
         int numVendors=3;
         int numCustomers=5;
-        Vendor[] vendorObjects = new Vendor[numVendors];
-        Customer[]customerObjects = new Customer[numCustomers];
         Thread [] vendorThreads=new Thread[numVendors];
         Thread [] customerThreads=new Thread[numCustomers];
         int ticketReleaseRate = config.getTicketReleaseRate();
@@ -73,17 +71,15 @@ public class Main {
         //create vendor threads
         for (int i = 0; i < numVendors; i++) {
 
-            vendorObjects[i] = new Vendor(ticketReleaseRate, ticketPool, i + 1,ticketPoolService); //
-            vendors.add(vendorObjects[i]);
-            vendorThreads[i] = new Thread(vendorObjects[i]);
+            vendors.add(new Vendor(ticketReleaseRate, ticketPool, i + 1,ticketPoolService)); //
+            vendorThreads[i] = new Thread(vendors.get(i));
             vendorThreads[i].start();
         }
         //create customer threads
         for (int i = 0; i < numCustomers; i++) {
 
-            customerObjects[i] = new Customer(i+1,customerRetrievalRate,ticketPoolService,ticketPool);
-            customers.add(customerObjects[i]);
-            customerThreads[i]=new Thread(customerObjects[i]);
+            customers.add(new Customer(i+1,customerRetrievalRate,ticketPoolService,ticketPool));
+            customerThreads[i]=new Thread(customers.get(i));
             customerThreads[i].start();
         }
 
@@ -95,21 +91,21 @@ public class Main {
             customerThreads[j].join();
         }
         for(int i=0;i<numVendors;i++) {
-            System.out.println(vendorObjects[i]);
+            System.out.println(vendors.get(i));
         }
         for(int j=0;j<numCustomers;j++){
-            System.out.println(customerObjects[j]);
-            System.out.println(customerObjects[j].getCustomerId());
+            System.out.println(customers.get(j));
+            System.out.println(customers.get(j).getCustomerId());
         }
-
 
     }
 
-    public static void restartTicketPool(Config config,TicketPool ticketPool) {
+    public static void restartTicketPool(Config config,TicketPool ticketPool,TicketPoolService ticketPoolService) {
         ticketPool.getAvailableTickets().clear();
         ticketPool.setTotalTickets(config.getTotalTickets());
         ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
         ticketPool.setCurrentTicket(1);
+        ticketPoolService.getLogs().clear();
 
         for (Vendor vendor : vendors) {
             vendor.resetVendor();
