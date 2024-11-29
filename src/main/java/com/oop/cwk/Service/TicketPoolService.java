@@ -1,9 +1,7 @@
 package com.oop.cwk.Service;
 
-import com.oop.cwk.Model.Customer;
 import com.oop.cwk.Model.Ticket;
 import com.oop.cwk.Model.TicketPool;
-import com.oop.cwk.Model.Vendor;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -23,11 +21,8 @@ public class TicketPoolService {
         this.ticketPool = ticketPool;
         System.out.println("Ticket Pool Service Created");
     }
-
     private static Logger logger = Logger.getLogger(TicketPoolService.class.getName());
     private  final List<String> logs = new ArrayList<>();
-
-
     public List<String> getLogs() {
         return logs;
     }
@@ -67,65 +62,43 @@ public class TicketPoolService {
     }
 
 
-    public void addTicket(int releaseInterval, int vendorId , Vendor vendor) {
+    public void addTicket() {
         lock.lock();
-        System.out.println("Vendor "+vendorId+" Acquired Lock");
         try {
-            while (ticketPool.getTotalTickets()!=0) {
-                checkStopped();
-                if (ticketPool.getAvailableTickets().size() == ticketPool.getMaximumTicketCapacity()) {
-                    notFull.await();
-                } else {
-                    Ticket ticket = new Ticket(ticketPool.getCurrentTicket());
-                    ticketPool.getAvailableTickets().offer(ticket);
-                    vendor.TicketSold(ticketPool.getCurrentTicket());
-                    System.out.println("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
-                    logger.info("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
-                    logs.add("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
-                    ticketPool.decrementTotalTickets();
-                    ticketPool.incrementCurrentTicket();
-                    Thread.sleep(releaseInterval);
-                    notEmpty.signalAll();
-                    return;
-                }
+            while (ticketPool.getAvailableTickets().size()>= ticketPool.getMaximumTicketCapacity()){
+                notFull.await();
             }
+            Ticket ticket=new Ticket(4);
+            ticketPool.getAvailableTickets().offer(ticket);
+            System.out.println(Thread.currentThread().getName()+" : Ticket Added");
+            notEmpty.signalAll();
         }
         catch (InterruptedException e) {
             //handle this
                 throw new RuntimeException(e);
             }
         finally {
-            System.out.println("Vendor "+vendorId+" Released Lock");
             lock.unlock();
         }
     }
 
 
-    public void removeTicket(int retrievalInterval,int customerId, Customer customer)  {
+    public void removeTicket()  {
         lock.lock();
-        System.out.println("Customer "+customerId+" Acquired Lock");
         try {
-            while (ticketPool.getTotalTickets() != 0 || !ticketPool.getAvailableTickets().isEmpty()) {
-                checkStopped();
-                if (ticketPool.getAvailableTickets().isEmpty() && ticketPool.getTotalTickets() !=0) {
-                    notEmpty.await();
-                } else {
-                    Ticket ticket = ticketPool.getAvailableTickets().poll();
-                    customer.ticketBought(ticket.getId());
-                    System.out.println("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
-                    logger.warning("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
-                    logs.add("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
-                    Thread.sleep(retrievalInterval);
-                    notFull.signalAll();
-                    return;
-                }
+            while (ticketPool.getAvailableTickets().isEmpty()){
+                notEmpty.await();
             }
+            ticketPool.getAvailableTickets().poll();
+            System.out.println(Thread.currentThread().getName()+": Ticket Removed");
+            notFull.signalAll();
+
+
         }
         catch (Exception e){
             //handle this
         }
         finally {
-            System.out.println("Customer "+customerId+" Released Lock");
             lock.unlock();
         }
     }

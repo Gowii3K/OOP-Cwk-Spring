@@ -7,44 +7,36 @@ import java.util.List;
 
 public  class Vendor implements Runnable{
 
-    private final int vendorId;//unique id for each vendor
+    private final int totalTickets;
+
     private final int releaseInterval;//get from config
     private final TicketPoolService ticketPoolService;
     private final TicketPool ticketPool;
-    private final List<Integer> soldTickets=new ArrayList<>();
 
 
-    public int getVendorId() {
-        return vendorId;
-    }
-    public List<Integer> getSoldTickets() {return soldTickets;}
 
-    public Vendor(int releaseInterval, TicketPool ticketPool, int vendorId, TicketPoolService ticketPoolService){
+    public Vendor(int releaseInterval, TicketPool ticketPool, TicketPoolService ticketPoolService, int totalTickets){
 
         this.releaseInterval=releaseInterval;
         this.ticketPool=ticketPool;
-        this.vendorId=vendorId;
 
         this.ticketPoolService = ticketPoolService;
+        this.totalTickets = totalTickets;
     }
 
-    public void TicketSold(Integer ticketId){
-        soldTickets.add(ticketId);
-    }
 
-    public void resetVendor(){
-        soldTickets.clear();
-    }
 
     @Override
     public void run() {
-        while (true){
-            ticketPoolService.addTicket(releaseInterval,this.vendorId,this);
-            if (ticketPool.getTotalTickets() == 0) {
-                System.out.println("All tickets added, Vendor " + vendorId + "Finished execution.. Terminating ");
-                break;
+        for(int i=0;i<totalTickets;i++){
+            ticketPoolService.addTicket();
+            try {
+                Thread.sleep(releaseInterval);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
             }
         }
+
     }
 
 

@@ -58,7 +58,6 @@ public class Main {
     }
 
     public static void startTicketPool(Config config,TicketPool ticketPool,TicketPoolService ticketPoolService) throws InterruptedException {
-        ticketPool.setTotalTickets(config.getTotalTickets());
         ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
 
         int numVendors=10;
@@ -67,19 +66,23 @@ public class Main {
         Thread [] customerThreads=new Thread[numCustomers];
         int ticketReleaseRate = config.getTicketReleaseRate();
         int customerRetrievalRate = config.getCustomerRetrievalRate();
+        int totalTickets=config.getTotalTickets();
+
 
         //create vendor threads
         for (int i = 0; i < numVendors; i++) {
 
-            vendors.add(new Vendor(ticketReleaseRate, ticketPool, i + 1,ticketPoolService)); //
+            vendors.add(new Vendor(ticketReleaseRate, ticketPool,ticketPoolService,totalTickets)); //
             vendorThreads[i] = new Thread(vendors.get(i));
+            vendorThreads[i].setName("Vendor"+(i+1));
             vendorThreads[i].start();
         }
         //create customer threads
         for (int i = 0; i < numCustomers; i++) {
 
-            customers.add(new Customer(i+1,customerRetrievalRate,ticketPoolService,ticketPool));
+            customers.add(new Customer(customerRetrievalRate,ticketPoolService,ticketPool,10));
             customerThreads[i]=new Thread(customers.get(i));
+            customerThreads[i].setName("Customer"+(i+1));
             customerThreads[i].start();
         }
 
@@ -95,24 +98,15 @@ public class Main {
         }
         for(int j=0;j<numCustomers;j++){
             System.out.println(customers.get(j));
-            System.out.println(customers.get(j).getCustomerId());
         }
 
     }
 
     public static void restartTicketPool(Config config,TicketPool ticketPool,TicketPoolService ticketPoolService) {
         ticketPool.getAvailableTickets().clear();
-        ticketPool.setTotalTickets(config.getTotalTickets());
         ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
-        ticketPool.setCurrentTicket(1);
         ticketPoolService.getLogs().clear();
 
-        for (Vendor vendor : vendors) {
-            vendor.resetVendor();
-        }
-        for (Customer customer : customers) {
-            customer.resetCustomer();
-        }
 
     }
 }
