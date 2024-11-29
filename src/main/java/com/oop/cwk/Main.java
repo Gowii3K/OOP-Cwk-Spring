@@ -61,8 +61,8 @@ public class Main {
         ticketPool.setTotalTickets(config.getTotalTickets());
         ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
 
-        int numVendors=3;
-        int numCustomers=5;
+        int numVendors=10;
+        int numCustomers=10;
         Thread [] vendorThreads=new Thread[numVendors];
         Thread [] customerThreads=new Thread[numCustomers];
         int ticketReleaseRate = config.getTicketReleaseRate();
