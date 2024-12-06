@@ -47,7 +47,6 @@ public class TicketPoolService {
         try {
             isStopped = false;
             notStopped.signalAll();
-            System.out.println("resumed");
         }
         finally {
             lock.unlock();

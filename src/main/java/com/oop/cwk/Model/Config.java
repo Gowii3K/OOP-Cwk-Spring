@@ -7,13 +7,16 @@ public class Config {
      private int ticketReleaseRate;
      private int customerRetrievalRate;
      private int maxTicketCapacity;
+     private final int numVendors;
+     private final int numCustomers;
 
-
-     public Config(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity) {
+     public Config(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity, int numVendors, int numCustomers) {
           this.totalTickets = totalTickets;
           this.ticketReleaseRate = ticketReleaseRate;
           this.customerRetrievalRate = customerRetrievalRate;
           this.maxTicketCapacity = maxTicketCapacity;
+          this.numVendors = numVendors;
+          this.numCustomers = numCustomers;
      }
 
      public int getTotalTickets() {
@@ -38,6 +41,14 @@ public class Config {
 
      public void setCustomerRetrievalRate(int customerRetrievalRate) {
           this.customerRetrievalRate = customerRetrievalRate;
+     }
+
+     public int getNumVendors() {
+          return numVendors;
+     }
+
+     public int getNumCustomers() {
+          return numCustomers;
      }
 
      public int getMaxTicketCapacity() {

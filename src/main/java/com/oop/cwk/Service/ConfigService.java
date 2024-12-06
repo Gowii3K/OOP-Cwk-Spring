@@ -61,10 +61,31 @@ public class ConfigService {
             scanner.nextLine();
         }while (maxTicketCapacity <=0);
 
-        config=new Config(totalTickets,ticketReleaseRate,customerRetrievalRate,maxTicketCapacity);
+        int numVendors;
 
+        do {
+            System.out.println("Enter Number of Vendors (Minimum 1)");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Please enter a number");
+                scanner.nextLine();
+            }
+            numVendors = scanner.nextInt();
+            scanner.nextLine();
+        }while (numVendors <=0);
 
+        int numCustomers;
 
+        do {
+            System.out.println("Enter Number of Customers (Minimum 1)");
+            while (!scanner.hasNextInt()) {
+                System.out.println("Please enter a number");
+                scanner.nextLine();
+            }
+            numCustomers = scanner.nextInt();
+            scanner.nextLine();
+        }while (numCustomers <=0);
+
+        config=new Config(totalTickets,ticketReleaseRate,customerRetrievalRate,maxTicketCapacity,numVendors,numCustomers);
 
 
         String myJson=gson.toJson(config);

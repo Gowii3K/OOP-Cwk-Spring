@@ -28,18 +28,17 @@ public class Main {
     public static Config getConfig() {
         return config;
     }
-    private static final int numVendors=10;
-    private static final int numCustomers=10;
-    private static final Thread [] vendorThreads=new Thread[numVendors];
-    private static final Thread [] customerThreads=new Thread[numCustomers];
+
+    private static  Thread [] vendorThreads;
+    private static  Thread [] customerThreads;
+
 
 
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext context=SpringApplication.run(Main.class, args);
+
         TicketPool ticketPool=context.getBean(TicketPool.class);
         TicketPoolService ticketPoolService=context.getBean(TicketPoolService.class);
-
-        // initialize TicketPool with values from config
         ConfigService configService=context.getBean(ConfigService.class);
         Scanner scanner=new Scanner(System.in);
 
@@ -49,6 +48,7 @@ public class Main {
         System.out.println("1. Create New Config File");
         System.out.println("2. Load Existing Config File");
         do{
+            System.out.println("Enter option: ");
             while (!scanner.hasNextInt()) {
                 System.out.println("Please enter a valid choice");
                 scanner.nextLine();
@@ -70,17 +70,30 @@ public class Main {
                 break;
         }
 
+        vendorThreads=new Thread[config.getNumVendors()];
+        customerThreads=new Thread[config.getNumCustomers()];
+
         startTicketPool(config,ticketPool,ticketPoolService);
 
     }
 
+
+    /**
+     * Initializes the ticketPool with configuration values provided by the user
+     * @param config=details to configure the ticketPool
+     * @param ticketPool=details to configure the ticketPool
+     * @param ticketPoolService=common ticketPool for vendors and consumers to operate on
+     * @throws InterruptedException==service class to handle business logic of ticketPool
+     */
     public static void startTicketPool(Config config,TicketPool ticketPool,TicketPoolService ticketPoolService) throws InterruptedException {
+
+        //initialize values from
         ticketPool.setTotalTickets(config.getTotalTickets());
         ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
-
-
         int ticketReleaseRate = config.getTicketReleaseRate();
         int customerRetrievalRate = config.getCustomerRetrievalRate();
+        int numVendors=config.getNumVendors();
+        int numCustomers=config.getNumCustomers();
 
         //create vendor threads
         for (int i = 0; i < numVendors; i++) {
@@ -114,6 +127,12 @@ public class Main {
 
     }
 
+    /**
+     * Resets the ticketPool to the configuration chosen by the user at the start
+     * @param config=details to configure the ticketPool
+     * @param ticketPool=common ticketPool for vendors and consumers to operate on
+     * @param ticketPoolService=service class to handle business logic of ticketPool
+     */
     public static void restartTicketPool(Config config,TicketPool ticketPool,TicketPoolService ticketPoolService) {
         ticketPool.getAvailableTickets().clear();
         ticketPool.setTotalTickets(config.getTotalTickets());
@@ -121,23 +140,29 @@ public class Main {
         ticketPool.setCurrentTicket(1);
         ticketPoolService.getLogs().clear();
 
+        //reset every vendor
         for (Vendor vendor : vendors) {
             vendor.resetVendor();
         }
+        //reset every customer
         for (Customer customer : customers) {
             customer.resetCustomer();
         }
 
 
-        for (int i = 0; i < numVendors; i++) {
-            vendorThreads[i] = new Thread(vendors.get(i));
-            vendorThreads[i].start();
-        }
+        //create new thread if existing threads are terminated
+        for (int i = 0; i < config.getNumVendors(); i++) {
+            if(!vendorThreads[i].isAlive()) {
+                vendorThreads[i] = new Thread(vendors.get(i));
+                vendorThreads[i].start();
+            }
 
-        // Create new threads for customers
-        for (int i = 0; i < numCustomers; i++) {
-            customerThreads[i] = new Thread(customers.get(i));
-            customerThreads[i].start();
+        }
+        for (int i = 0; i < config.getNumCustomers(); i++) {
+            if(!customerThreads[i].isAlive()) {
+                customerThreads[i] = new Thread(customers.get(i));
+                customerThreads[i].start();
+            }
         }
 
 

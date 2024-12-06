@@ -4,14 +4,17 @@ import com.oop.cwk.Service.TicketPoolService;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * Represents a customer that purchases ticket from the ticketPool
+ */
 public class Customer implements Runnable{
 
 
-    private final int customerId;
-    private final int retrievalInterval;//get from config
-    private final TicketPoolService ticketPoolService;
-    private final TicketPool ticketPool;
-    private final List<Integer> boughtTickets= new ArrayList<>();
+    private final int customerId;//unique id for each customer
+    private final int retrievalInterval;//time interval that a customer should wait before attempting to purchase another ticket
+    private final TicketPoolService ticketPoolService;//service to handle ticketPool business logic
+    private final TicketPool ticketPool;//common ticketPool shared among vendors and customers
+    private final List<Integer> boughtTickets= new ArrayList<>();//track the tickets purchased by the customer
 
     public Customer(int customerId, int retrievalInterval, TicketPoolService ticketPoolService, TicketPool ticketPool) {
         this.customerId = customerId;
@@ -20,17 +23,27 @@ public class Customer implements Runnable{
         this.ticketPool = ticketPool;
     }
 
+    //getter for customerId
     public int getCustomerId() {
         return customerId;
     }
+    //getter for BoughtTickets
     public List<Integer> getBoughtTickets() {
         return boughtTickets;
     }
 
 
+    /**
+     * Adds id of ticket that was purchased by the customer  to the boughtTickets array
+     * @param ticketId=id of ticket that the customer purchased
+     */
     public void ticketBought(Integer ticketId){
         boughtTickets.add(ticketId);
     }
+
+    /**
+     * resets customer objects to initial state
+     */
     public void resetCustomer(){
         boughtTickets.clear();
     }
@@ -41,7 +54,7 @@ public class Customer implements Runnable{
         while (true) {
             ticketPoolService.removeTicket(customerId,this);
             try {
-                Thread.sleep(retrievalInterval);
+                Thread.sleep(retrievalInterval* 1000L);
             } catch (InterruptedException e) {
                 throw new RuntimeException(e);
             }
