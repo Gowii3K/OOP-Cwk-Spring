@@ -39,7 +39,7 @@ public class Customer implements Runnable{
     @Override
     public void run() {
         while (true) {
-            ticketPoolService.removeTicket(retrievalInterval,customerId,this);
+            ticketPoolService.removeTicket(customerId,this);
             try {
                 Thread.sleep(retrievalInterval);
             } catch (InterruptedException e) {

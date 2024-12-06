@@ -9,6 +9,7 @@ import com.oop.cwk.Service.TicketPoolService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
@@ -26,39 +27,23 @@ public class VendorController {
         this.ticketPoolService = ticketPoolService;
     }
 
-    @GetMapping("/vendors")
-    public TicketPool getVendors() {
-        return ticketPool;
-
-    }
-
-    @GetMapping("/customers")
-    public TicketDTO getCustomers() {
+    @GetMapping("/ticketPool")
+    public TicketDTO getData() {
         List<Customer> customers= Main.getCustomers();
         List<Vendor> vendors=Main.getVendors();
         return new TicketDTO(ticketPool,customers,vendors,ticketPoolService);
     }
 
-    @GetMapping("/test")
-    public List<Vendor> getTestVendors() {
-        return Main.getVendors();
-    }
 
-    @GetMapping("/test2")
-    public List<Customer> getTestCustomers() {
-        return Main.getCustomers();
-    }
-
-    @GetMapping("/pause")
-    public String pauseThreads() {
+    @PostMapping("/stop")
+    public String stopThreads() {
         ticketPoolService.stopTicketPool();
         return "All threads are paused.";
     }
 
-    @GetMapping("/resume")
-    public String resumeThreads() {
+    @PostMapping("/restart")
+    public String restartThreads() {
         if(TicketPoolService.getIsStopped()){
-
         }
         else {
             ticketPoolService.stopTicketPool();

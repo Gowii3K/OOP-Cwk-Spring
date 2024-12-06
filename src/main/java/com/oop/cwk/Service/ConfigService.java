@@ -16,9 +16,6 @@ public class ConfigService {
     Gson gson = new Gson();
 
 
-
-
-
     public Config createNewConfig(Scanner scanner) {
         int totalTickets;
 

@@ -39,7 +39,7 @@ public  class Vendor implements Runnable{
     @Override
     public void run() {
         while (true){
-            ticketPoolService.addTicket(releaseInterval,this.vendorId,this);
+            ticketPoolService.addTicket(this.vendorId,this);
             try {
                 Thread.sleep(releaseInterval);
             } catch (InterruptedException e) {

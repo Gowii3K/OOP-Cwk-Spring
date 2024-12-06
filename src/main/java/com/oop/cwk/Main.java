@@ -45,7 +45,6 @@ public class Main {
 
         int option;
 
-
         System.out.println("Welcome to the program ");
         System.out.println("1. Create New Config File");
         System.out.println("2. Load Existing Config File");

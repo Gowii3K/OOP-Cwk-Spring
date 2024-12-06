@@ -67,9 +67,9 @@ public class TicketPoolService {
     }
 
 
-    public void addTicket(int releaseInterval, int vendorId , Vendor vendor) {
+
+    public void addTicket(int vendorId , Vendor vendor) {
         lock.lock();
-        System.out.println("Vendor "+vendorId+" Acquired Lock");
         try {
             while (ticketPool.getTotalTickets()!=0) {
                 checkStopped();
@@ -79,8 +79,7 @@ public class TicketPoolService {
                     Ticket ticket = new Ticket(ticketPool.getCurrentTicket());
                     ticketPool.getAvailableTickets().offer(ticket);
                     vendor.TicketSold(ticketPool.getCurrentTicket());
-                    System.out.println("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
-                    logger.info("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
+                    logger.info("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId+ " Current size is "+ticketPool.getAvailableTickets().size());
                     logs.add("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
                     ticketPool.decrementTotalTickets();
                     ticketPool.incrementCurrentTicket();
@@ -94,15 +93,13 @@ public class TicketPoolService {
                 throw new RuntimeException(e);
             }
         finally {
-            System.out.println("Vendor "+vendorId+" Released Lock");
             lock.unlock();
         }
     }
 
 
-    public void removeTicket(int retrievalInterval,int customerId, Customer customer)  {
+    public void removeTicket(int customerId, Customer customer)  {
         lock.lock();
-        System.out.println("Customer "+customerId+" Acquired Lock");
         try {
             while (ticketPool.getTotalTickets() != 0 || !ticketPool.getAvailableTickets().isEmpty()) {
                 checkStopped();
@@ -111,8 +108,7 @@ public class TicketPoolService {
                 } else {
                     Ticket ticket = ticketPool.getAvailableTickets().poll();
                     customer.ticketBought(ticket.getId());
-                    System.out.println("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
-                    logger.info("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
+                    logger.info("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId+ "Current size is "+ticketPool.getAvailableTickets().size());
                     logs.add("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
                     notFull.signalAll();
                     return;
@@ -123,7 +119,6 @@ public class TicketPoolService {
             //handle this
         }
         finally {
-            System.out.println("Customer "+customerId+" Released Lock");
             lock.unlock();
         }
     }
