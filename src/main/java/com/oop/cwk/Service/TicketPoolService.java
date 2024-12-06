@@ -84,7 +84,6 @@ public class TicketPoolService {
                     logs.add("Ticket No "+ticket.getId()+ "Added By Vendor" + vendorId);
                     ticketPool.decrementTotalTickets();
                     ticketPool.incrementCurrentTicket();
-                    Thread.sleep(releaseInterval);
                     notEmpty.signalAll();
                     return;
                 }
@@ -113,9 +112,8 @@ public class TicketPoolService {
                     Ticket ticket = ticketPool.getAvailableTickets().poll();
                     customer.ticketBought(ticket.getId());
                     System.out.println("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
-                    logger.warning("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
+                    logger.info("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
                     logs.add("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
-                    Thread.sleep(retrievalInterval);
                     notFull.signalAll();
                     return;
                 }

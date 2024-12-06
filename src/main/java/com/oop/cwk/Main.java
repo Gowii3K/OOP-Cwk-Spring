@@ -25,10 +25,14 @@ public class Main {
     }
 
     private static Config config;
-
     public static Config getConfig() {
         return config;
     }
+    private static final int numVendors=10;
+    private static final int numCustomers=10;
+    private static final Thread [] vendorThreads=new Thread[numVendors];
+    private static final Thread [] customerThreads=new Thread[numCustomers];
+
 
     public static void main(String[] args) throws InterruptedException {
         ApplicationContext context=SpringApplication.run(Main.class, args);
@@ -38,14 +42,28 @@ public class Main {
         // initialize TicketPool with values from config
         ConfigService configService=context.getBean(ConfigService.class);
         Scanner scanner=new Scanner(System.in);
-        System.out.println("Welcome to the program Please select an Option");
+
+        int option;
+
+
+        System.out.println("Welcome to the program ");
         System.out.println("1. Create New Config File");
         System.out.println("2. Load Existing Config File");
+        do{
+            while (!scanner.hasNextInt()) {
+                System.out.println("Please enter a valid choice");
+                scanner.nextLine();
+            }
+            option = scanner.nextInt();
 
-        int option=scanner.nextInt();
+        }while (option<1 || option>2);
+
+
+
 
         switch (option){
             case 1:
+                scanner.nextLine();
                 config=configService.createNewConfig(scanner);
                 break;
             case 2:
@@ -61,10 +79,7 @@ public class Main {
         ticketPool.setTotalTickets(config.getTotalTickets());
         ticketPool.setMaximumTicketCapacity(config.getMaxTicketCapacity());
 
-        int numVendors=10;
-        int numCustomers=10;
-        Thread [] vendorThreads=new Thread[numVendors];
-        Thread [] customerThreads=new Thread[numCustomers];
+
         int ticketReleaseRate = config.getTicketReleaseRate();
         int customerRetrievalRate = config.getCustomerRetrievalRate();
 
@@ -113,6 +128,20 @@ public class Main {
         for (Customer customer : customers) {
             customer.resetCustomer();
         }
+
+
+        for (int i = 0; i < numVendors; i++) {
+            vendorThreads[i] = new Thread(vendors.get(i));
+            vendorThreads[i].start();
+        }
+
+        // Create new threads for customers
+        for (int i = 0; i < numCustomers; i++) {
+            customerThreads[i] = new Thread(customers.get(i));
+            customerThreads[i].start();
+        }
+
+
 
     }
 }

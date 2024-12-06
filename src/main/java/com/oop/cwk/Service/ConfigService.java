@@ -15,15 +15,22 @@ public class ConfigService {
     Config config= null;
     Gson gson = new Gson();
 
+
+
+
+
     public Config createNewConfig(Scanner scanner) {
         int totalTickets;
+
         do {
             System.out.println("Enter Total Tickets (Minimum 1)");
+
             while (!scanner.hasNextInt()) {
                 System.out.println("Please enter a number");
                 scanner.nextLine();
             }
             totalTickets = scanner.nextInt();
+            scanner.nextLine();
         }while (totalTickets<=0);
 
 
@@ -44,6 +51,7 @@ public class ConfigService {
                 scanner.nextLine();
             }
             customerRetrievalRate = scanner.nextInt();
+            scanner.nextLine();
         }while (customerRetrievalRate <=0);
         int maxTicketCapacity;
         do {
@@ -53,6 +61,7 @@ public class ConfigService {
                 scanner.nextLine();
             }
             maxTicketCapacity = scanner.nextInt();
+            scanner.nextLine();
         }while (maxTicketCapacity <=0);
 
         config=new Config(totalTickets,ticketReleaseRate,customerRetrievalRate,maxTicketCapacity);

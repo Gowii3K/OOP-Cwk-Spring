@@ -40,6 +40,11 @@ public class Customer implements Runnable{
     public void run() {
         while (true) {
             ticketPoolService.removeTicket(retrievalInterval,customerId,this);
+            try {
+                Thread.sleep(retrievalInterval);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             if (ticketPool.getTotalTickets() == 0 && ticketPool.getAvailableTickets().isEmpty()) {
                 System.out.println("All tickets bought,Customer " +customerId +" Finished execution.. Terminating ");
                 break;

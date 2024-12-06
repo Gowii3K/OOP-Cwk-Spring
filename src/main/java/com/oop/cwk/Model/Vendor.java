@@ -40,6 +40,11 @@ public  class Vendor implements Runnable{
     public void run() {
         while (true){
             ticketPoolService.addTicket(releaseInterval,this.vendorId,this);
+            try {
+                Thread.sleep(releaseInterval);
+            } catch (InterruptedException e) {
+                throw new RuntimeException(e);
+            }
             if (ticketPool.getTotalTickets() == 0) {
                 System.out.println("All tickets added, Vendor " + vendorId + "Finished execution.. Terminating ");
                 break;

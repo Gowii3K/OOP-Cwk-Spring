@@ -58,10 +58,14 @@ public class VendorController {
     @GetMapping("/resume")
     public String resumeThreads() {
         if(TicketPoolService.getIsStopped()){
-            System.out.println("Restarted");
-            Main.restartTicketPool(Main.getConfig(),ticketPool,ticketPoolService);
-            ticketPoolService.resume();
+
         }
+        else {
+            ticketPoolService.stopTicketPool();
+        }
+        System.out.println("Restarted");
+        Main.restartTicketPool(Main.getConfig(),ticketPool,ticketPoolService);
+        ticketPoolService.resume();
         return "All threads are resumed.";
     }
 
