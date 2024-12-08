@@ -8,6 +8,11 @@ import com.oop.cwk.Service.TicketPoolService;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
+
+import java.awt.*;
+import java.io.IOException;
+import java.net.URI;
+import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -66,6 +71,7 @@ public class Main {
                 config=configService.createNewConfig(scanner);
                 break;
             case 2:
+                scanner.nextLine();
                 config=configService.loadConfig(scanner);
                 break;
         }
@@ -73,9 +79,24 @@ public class Main {
         vendorThreads=new Thread[config.getNumVendors()];
         customerThreads=new Thread[config.getNumCustomers()];
 
-        startTicketPool(config,ticketPool,ticketPoolService);
+        System.out.println("Configuration Set: "+config);
+        System.out.println("Press enter key to start");
+        scanner.nextLine();
+        scanner.nextLine();
 
+
+        startTicketPool(config,ticketPool,ticketPoolService);
+        try {
+            Desktop.getDesktop().browse(new URI("http://localhost:4200/"));
+        }
+
+
+             catch (IOException | URISyntaxException e) {
+            throw new RuntimeException(e);
+        }
     }
+
+
 
 
     /**

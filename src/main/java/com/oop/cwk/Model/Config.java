@@ -1,7 +1,9 @@
 package com.oop.cwk.Model;
 
 
-
+/**
+ * Represents the Configuration values that the ticketBooking system should operate in
+ */
 public class Config {
      private int totalTickets;
      private int ticketReleaseRate;
@@ -19,6 +21,7 @@ public class Config {
           this.numCustomers = numCustomers;
      }
 
+     //getters and setters
      public int getTotalTickets() {
           return totalTickets;
      }

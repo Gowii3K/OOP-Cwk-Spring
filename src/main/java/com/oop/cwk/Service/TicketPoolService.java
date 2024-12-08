@@ -24,7 +24,7 @@ public class TicketPoolService {
         System.out.println("Ticket Pool Service Created");
     }
 
-    private static Logger logger = Logger.getLogger(TicketPoolService.class.getName());
+    private static final Logger logger = Logger.getLogger(TicketPoolService.class.getName());
     private  final List<String> logs = new ArrayList<>();
 
 
