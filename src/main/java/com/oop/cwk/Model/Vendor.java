@@ -10,11 +10,16 @@ import java.util.List;
  */
 public  class Vendor implements Runnable{
 
-    private final int vendorId;//unique id for each vendor
-    private final int releaseInterval;//time interval that a vendor should wait before attempting to release another ticket
-    private final TicketPoolService ticketPoolService;//service to handle ticketPool business logic
-    private final TicketPool ticketPool;//common ticketPool shared among vendors and customers
-    private final List<Integer> soldTickets=new ArrayList<>();//track the tickets put on sale by the vendor
+    //unique id for each vendor
+    private final int vendorId;
+    //time interval that a vendor should wait before attempting to release another ticket
+    private final int releaseInterval;
+    //service to handle ticketPool business logic
+    private final TicketPoolService ticketPoolService;
+    //common ticketPool shared among vendors and customers
+    private final TicketPool ticketPool;
+    //track the tickets put on sale by the vendor
+    private final List<Integer> soldTickets=new ArrayList<>();
 
 
     //getter for vendorId
@@ -53,7 +58,7 @@ public  class Vendor implements Runnable{
     @Override
     public void run() {
         while (true){
-            ticketPoolService.addTicket(this.vendorId,this);
+            ticketPoolService.addTicket(this);
             try {
                 Thread.sleep(releaseInterval* 1000L);
             } catch (InterruptedException e) {

@@ -5,8 +5,8 @@ package com.oop.cwk.Model;
  */
 public class Ticket {
 
-    private int id;//unique identifier for each ticket
-
+    //unique identifier for each ticket
+    private int id;
 
     public Ticket(int id) {
         this.id = id;

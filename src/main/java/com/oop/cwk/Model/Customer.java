@@ -10,11 +10,16 @@ import java.util.List;
 public class Customer implements Runnable{
 
 
-    private final int customerId;//unique id for each customer
-    private final int retrievalInterval;//time interval that a customer should wait before attempting to purchase another ticket
-    private final TicketPoolService ticketPoolService;//service to handle ticketPool business logic
-    private final TicketPool ticketPool;//common ticketPool shared among vendors and customers
-    private final List<Integer> boughtTickets= new ArrayList<>();//track the tickets purchased by the customer
+    //unique id for each customer
+    private final int customerId;
+    //time interval that a customer should wait before attempting to purchase another ticket
+    private final int retrievalInterval;
+    //service to handle ticketPool business logic
+    private final TicketPoolService ticketPoolService;
+    //common ticketPool shared among vendors and customers
+    private final TicketPool ticketPool;
+    //track the tickets purchased by the customer
+    private final List<Integer> boughtTickets= new ArrayList<>();
 
     public Customer(int customerId, int retrievalInterval, TicketPoolService ticketPoolService, TicketPool ticketPool) {
         this.customerId = customerId;
@@ -52,7 +57,7 @@ public class Customer implements Runnable{
     @Override
     public void run() {
         while (true) {
-            ticketPoolService.removeTicket(customerId,this);
+            ticketPoolService.removeTicket(this);
             try {
                 Thread.sleep(retrievalInterval* 1000L);
             } catch (InterruptedException e) {

@@ -5,11 +5,17 @@ package com.oop.cwk.Model;
  * Represents the Configuration values that the ticketBooking system should operate in
  */
 public class Config {
+     //total tickets available for the event
      private int totalTickets;
+     //time which a vendor must wait before attempting to release another ticket
      private int ticketReleaseRate;
+     //time which a customer must wait before attempting to purchase another ticket
      private int customerRetrievalRate;
+     //the maximum amount of tickets that can be on sale at a given time
      private int maxTicketCapacity;
+     //number of vendors for the event
      private final int numVendors;
+     //number of customers for the event
      private final int numCustomers;
 
      public Config(int totalTickets, int ticketReleaseRate, int customerRetrievalRate, int maxTicketCapacity, int numVendors, int numCustomers) {

@@ -9,13 +9,22 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.util.Scanner;
 
+/**
+ * Service for creating and loading configuration files
+ */
 @Service
 public class ConfigService {
 
     Config config= null;
+    //gson to convert object to json file
     Gson gson = new Gson();
 
 
+    /**
+     * Create a new configuration with inputs provided by the user
+     * @param scanner=take user input
+     * @return configuration file with properties defined by the user
+     */
     public Config createNewConfig(Scanner scanner) {
         int totalTickets;
 
@@ -103,6 +112,11 @@ public class ConfigService {
         return config;
     }
 
+    /**
+     * Load an existing configuration
+     * @param scanner=take in name of the configuration file
+     * @return configuration file specified by the user
+     */
     public Config loadConfig(Scanner scanner) {
 
         try {

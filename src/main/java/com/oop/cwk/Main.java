@@ -9,10 +9,6 @@ import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.context.ApplicationContext;
 
-import java.awt.*;
-import java.io.IOException;
-import java.net.URI;
-import java.net.URISyntaxException;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -86,18 +82,8 @@ public class Main {
 
 
         startTicketPool(config,ticketPool,ticketPoolService);
-        try {
-            Desktop.getDesktop().browse(new URI("http://localhost:4200/"));
-        }
 
-
-             catch (IOException | URISyntaxException e) {
-            throw new RuntimeException(e);
-        }
     }
-
-
-
 
     /**
      * Initializes the ticketPool with configuration values provided by the user
@@ -138,13 +124,8 @@ public class Main {
         for (int j = 0; j < numCustomers; j++) {
             customerThreads[j].join();
         }
-        for(int i=0;i<numVendors;i++) {
-            System.out.println(vendors.get(i));
-        }
-        for(int j=0;j<numCustomers;j++){
-            System.out.println(customers.get(j));
-            System.out.println(customers.get(j).getCustomerId());
-        }
+
+        System.out.println("Finished Execution.. All Tickets Listed and Sold");
 
     }
 
@@ -185,6 +166,7 @@ public class Main {
                 customerThreads[i].start();
             }
         }
+
 
 
 

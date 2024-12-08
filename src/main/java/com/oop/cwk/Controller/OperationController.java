@@ -30,10 +30,9 @@ public class OperationController {
 
     /**
      * API endpoint for stopping and resuming All threads in the system.
-     * @return
      */
     @PostMapping("/stop")
-    public String stopThreads() {
+    public void stopThreads() {
         if(TicketPoolService.getIsStopped()){
             ticketPoolService.resume();
         }
@@ -41,22 +40,19 @@ public class OperationController {
             ticketPoolService.stopTicketPool();
 
         }
-        return "All threads are paused.";
     }
 
     /**
      * API endpoint for restarting the ticketPool with the initial values given by the user
-     * @return
      */
     @PostMapping("/restart")
-    public String restartThreads() {
+    public void restartThreads() {
         if(!TicketPoolService.getIsStopped()){
             ticketPoolService.stopTicketPool();
         }
         System.out.println("Restarted");
         Main.restartTicketPool(Main.getConfig(),ticketPool,ticketPoolService);
         ticketPoolService.resume();
-        return "All threads are resumed.";
     }
 
 }

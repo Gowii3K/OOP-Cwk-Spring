@@ -14,34 +14,50 @@ import java.util.concurrent.locks.Lock;
 import java.util.concurrent.locks.ReentrantLock;
 import java.util.logging.Logger;
 
+/**
+ * Represents Service operations related to the ticketPool
+ */
 @Service
 public class TicketPoolService {
 
     TicketPool ticketPool;
+
+    /**
+     * Constructs a ticketPoolService by autowiring the ticketPool
+     * @param ticketPool=ticketPool for the event
+     */
     @Autowired
     public TicketPoolService(TicketPool ticketPool) {
         this.ticketPool = ticketPool;
         System.out.println("Ticket Pool Service Created");
     }
 
+    //logger to log transactions related to the ticketPool
     private static final Logger logger = Logger.getLogger(TicketPoolService.class.getName());
+    //list of log messages
     private  final List<String> logs = new ArrayList<>();
 
+    //locks to protect critical section
+    private final Lock lock = new ReentrantLock();
+    //condition to check if the ticketPool is not full
+    private final Condition notFull = lock.newCondition();
+    //condition to check if the ticketPool is not empty
+    private final Condition notEmpty = lock.newCondition();
+    //condition to check if the ticketPool is not stopped
+    private final Condition notStopped = lock.newCondition();
+    //volatile boolean to represent if the operations are stopped
+    private static volatile Boolean isStopped = false;
+
+    //getters
+    public static Boolean getIsStopped() {
+        return isStopped;
+    }
 
     public List<String> getLogs() {
         return logs;
     }
 
-    private final Lock lock = new ReentrantLock();
-    private final Condition notFull = lock.newCondition();
-    private final Condition notEmpty = lock.newCondition();
-    private final Condition notStopped = lock.newCondition();
-    private static volatile Boolean isStopped = false;
-
-    public static Boolean getIsStopped() {
-        return isStopped;
-    }
-
+    //resume ticketPool operations
     public void resume(){
         lock.lock();
         try {
@@ -53,11 +69,13 @@ public class TicketPoolService {
         }
     }
 
+    //stop ticketPool operations
     public void stopTicketPool() {
         System.out.println("Stopping Ticket Pool");
         isStopped = true;
     }
 
+    //check if ticketPool is stopped
     public void checkStopped() throws InterruptedException {
         while (isStopped){
             notStopped.await();
@@ -66,9 +84,13 @@ public class TicketPoolService {
     }
 
 
-
-    public void addTicket(int vendorId , Vendor vendor) {
+    /**
+     * Adds ticket to the ticketPool
+     * @param vendor=instance of the vendor that tries to access the method
+     */
+    public void addTicket( Vendor vendor) {
         lock.lock();
+        int vendorId= vendor.getVendorId();
         try {
             while (ticketPool.getTotalTickets()!=0) {
                 checkStopped();
@@ -97,8 +119,13 @@ public class TicketPoolService {
     }
 
 
-    public void removeTicket(int customerId, Customer customer)  {
+    /**
+     * Removes ticket from the TicketPool
+     * @param customer=instance of the customer trying to purchase a ticket
+     */
+    public void removeTicket( Customer customer)  {
         lock.lock();
+        int customerId = customer.getCustomerId();
         try {
             while (ticketPool.getTotalTickets() != 0 || !ticketPool.getAvailableTickets().isEmpty()) {
                 checkStopped();
@@ -107,7 +134,7 @@ public class TicketPoolService {
                 } else {
                     Ticket ticket = ticketPool.getAvailableTickets().poll();
                     customer.ticketBought(ticket.getId());
-                    logger.info("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId+ "Current size is "+ticketPool.getAvailableTickets().size());
+                    logger.info("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId+ " Current size is "+ticketPool.getAvailableTickets().size());
                     logs.add("Ticket No "+ticket.getId()+ "Purchased By Customer" + customerId);
                     notFull.signalAll();
                     return;

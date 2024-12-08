@@ -7,14 +7,19 @@ import com.oop.cwk.Service.TicketPoolService;
 
 import java.util.List;
 
+/**
+ * Represents a Data Transfer Object to send data to the GUI
+ */
 public class TicketDTO {
 
+    //ticketPool of the system
     TicketPool ticketPool;
+    //Service layer of the system
     TicketPoolService ticketPoolService;
+    //List of vendors
     List<Customer> customers;
+    //List of Customers
     List<Vendor> vendors;
-
-
 
     public TicketPool getTicketPool() {
         return ticketPool;

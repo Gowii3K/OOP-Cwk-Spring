@@ -14,8 +14,7 @@ import java.util.logging.Logger;
 @Component
 public class TicketPool {
 
-    static Logger logger=Logger.getLogger(TicketPool.class.getName());
-    
+
     //total number of tickets available for the event
     private int totalTickets;
     //maximum number of tickets that can be on sale at a given time
